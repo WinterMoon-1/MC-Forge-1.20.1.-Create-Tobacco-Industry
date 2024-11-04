@@ -4,20 +4,13 @@ import com.mojang.logging.LogUtils;
 import net.kike.tobacco_industry.block.ModBlocks;
 import net.kike.tobacco_industry.block.entity.ModBlockEntities;
 import net.kike.tobacco_industry.entity.ModEntities;
-import net.kike.tobacco_industry.entity.client.RhinoRenderer;
 import net.kike.tobacco_industry.item.ModCreativeModTabs;
 import net.kike.tobacco_industry.item.ModItems;
 import net.kike.tobacco_industry.loot.ModLootModifiers;
 import net.kike.tobacco_industry.recipe.ModRecipes;
-import net.kike.tobacco_industry.screen.GemPolishingStationScreen;
 import net.kike.tobacco_industry.screen.ModMenuTypes;
 import net.kike.tobacco_industry.sound.ModSounds;
 import net.kike.tobacco_industry.villager.ModVillagers;
-import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -61,16 +54,11 @@ public class TobaccoIndustry {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.CATMINT.getId(), ModBlocks.POTTED_CATMINT);
-        });
+
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(ModItems.SAPPHIRE);
-            event.accept(ModItems.RAW_SAPPHIRE);
-        }
+
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
@@ -84,8 +72,7 @@ public class TobaccoIndustry {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            EntityRenderers.register(ModEntities.RHINO.get(), RhinoRenderer::new);
-            MenuScreens.register(ModMenuTypes.GEM_POLISHING_MENU.get(), GemPolishingStationScreen::new);
+
         }
     }
 }

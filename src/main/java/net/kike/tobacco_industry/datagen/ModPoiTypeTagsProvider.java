@@ -4,8 +4,6 @@ import net.kike.tobacco_industry.TobaccoIndustry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.PoiTypeTagsProvider;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.PoiTypeTags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
@@ -18,7 +16,6 @@ public class ModPoiTypeTagsProvider extends PoiTypeTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
-        tag(PoiTypeTags.ACQUIRABLE_JOB_SITE)
-                .addOptional(new ResourceLocation(TobaccoIndustry.MOD_ID, "sound_poi"));
+
     }
 }
