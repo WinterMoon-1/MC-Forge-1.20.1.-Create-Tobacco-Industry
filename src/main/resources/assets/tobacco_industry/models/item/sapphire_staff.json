@@ -1,0 +1,18 @@
+{
+  "parent": "minecraft:item/handheld",
+  "loader": "forge:separate_transforms",
+  "base": {
+    "parent": "tobacco_industry:item/sapphire_staff_3d"
+  },
+  "perspectives":{
+    "gui": {
+      "parent": "tobacco_industry:item/sapphire_staff_2d"
+    },
+    "ground": {
+      "parent": "tobacco_industry:item/sapphire_staff_2d"
+    },
+    "fixed": {
+      "parent": "tobacco_industry:item/sapphire_staff_2d"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "metal_detector_found_ore": {
+    "subtitles": "sounds.tobacco_industry.metal_detector_found_ore",
+    "sounds": [
+      "tobacco_industry:metal_detector_found_ore"
+    ]
+  },
+  "sound_block_break": {
+    "subtitle": "sounds.tobacco_industry.sound_block_break",
+    "sounds": [
+      "tobacco_industry:sound_block_break"
+    ]
+  },
+  "sound_block_step": {
+    "subtitle": "sounds.tobacco_industry.sound_block_step",
+    "sounds": [
+      "tobacco_industry:sound_block_step"
+    ]
+  },
+  "sound_block_place": {
+    "subtitle": "sounds.tobacco_industry.sound_block_place",
+    "sounds": [
+      "tobacco_industry:sound_block_place"
+    ]
+  },
+  "sound_block_hit": {
+    "subtitle": "sounds.tobacco_industry.sound_block_hit",
+    "sounds": [
+      "tobacco_industry:sound_block_hit"
+    ]
+  },
+  "sound_block_fall": {
+    "subtitle": "sounds.tobacco_industry.sound_block_fall",
+    "sounds": [
+      "tobacco_industry:sound_block_fall"
+    ]
+  },
+  "bar_brawl": {
+    "sounds": [
+      {
+        "name": "tobacco_industry:bar_brawl",
+        "stream": true
+      }
+    ]
+  }
+}
