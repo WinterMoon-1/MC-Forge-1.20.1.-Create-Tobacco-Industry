@@ -1,8 +1,9 @@
 package net.kike.tobacco_industry;
 
-import com.mojang.logging.LogUtils;
 import net.kike.tobacco_industry.block.ModBlocks;
 import net.kike.tobacco_industry.block.entity.ModBlockEntities;
+import net.kike.tobacco_industry.client.ClientSetup;
+import net.kike.tobacco_industry.effect.ModEffects;
 import net.kike.tobacco_industry.entity.ModEntities;
 import net.kike.tobacco_industry.item.ModCreativeModTabs;
 import net.kike.tobacco_industry.item.ModItems;
@@ -26,10 +27,8 @@ import org.slf4j.Logger;
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(TobaccoIndustry.MOD_ID)
 public class TobaccoIndustry {
-    // Define mod id in a common place for everything to reference
+
     public static final String MOD_ID = "tobacco_industry";
-    // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
 
     public TobaccoIndustry(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
@@ -46,8 +45,11 @@ public class TobaccoIndustry {
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
         ModRecipes.register(modEventBus);
+        ModEffects.register(modEventBus);
+
 
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(ClientSetup::onClientSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
@@ -61,13 +63,11 @@ public class TobaccoIndustry {
 
     }
 
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
 
     }
 
-    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
         @SubscribeEvent

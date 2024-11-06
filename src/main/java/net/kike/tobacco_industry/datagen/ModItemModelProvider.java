@@ -41,7 +41,28 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        simpleItem(ModItems.BASE_CIGARETTE);
+
+        cigaretteItemWithStrip(ModItems.BASE_CIGARETTE);
+        cigaretteItemWithStrip(ModItems.CIGARETTE_ATTUNEMENT);
+        cigaretteItemWithStrip(ModItems.CIGARETTE_FADING);
+        cigaretteItemWithStrip(ModItems.CIGARETTE_GLOWING);
+        cigaretteItemWithStrip(ModItems.CIGARETTE_MAGNETISM);
+        cigaretteItemWithStrip(ModItems.CIGARETTE_REACHING);
+        cigaretteItemWithStrip(ModItems.CIGARETTE_RETURNING);
+        cigaretteItemWithStrip(ModItems.CIGARETTE_WISDOM);
+        cigaretteItemWithStrip(ModItems.CIGARETTE_HASTE);
+        cigaretteItemWithStrip(ModItems.CIGARETTE_ABSORPTION);
+        cigaretteItemWithStrip(ModItems.CIGARETTE_DOLPHINS_GRACE);
+        cigaretteItemWithStrip(ModItems.CIGARETTE_NIGHT_VISION);
+        cigaretteItemWithStrip(ModItems.CIGARETTE_INVISIBILITY);
+        cigaretteItemWithStrip(ModItems.CIGARETTE_FIRE_RESISTANCE);
+        cigaretteItemWithStrip(ModItems.CIGARETTE_LEAPING);
+        cigaretteItemWithStrip(ModItems.CIGARETTE_SWIFTNESS);
+        cigaretteItemWithStrip(ModItems.CIGARETTE_WATER_BREATHING);
+        cigaretteItemWithStrip(ModItems.CIGARETTE_HEALING);
+        cigaretteItemWithStrip(ModItems.CIGARETTE_REGENERATION);
+        cigaretteItemWithStrip(ModItems.CIGARETTE_STRENGTH);
+
 
     }
 
@@ -99,6 +120,13 @@ public class ModItemModelProvider extends ItemModelProvider {
         return withExistingParent(item.getId().getPath(),
                 new ResourceLocation("item/generated")).texture("layer0",
                 new ResourceLocation(TobaccoIndustry.MOD_ID,"item/" + item.getId().getPath()));
+    }
+
+    private ItemModelBuilder cigaretteItemWithStrip(RegistryObject<Item> item) {
+        return withExistingParent(item.getId().getPath(),
+                new ResourceLocation("item/generated"))
+                .texture("layer0", new ResourceLocation(TobaccoIndustry.MOD_ID, "item/cigarette_base"))
+                .texture("layer1", new ResourceLocation(TobaccoIndustry.MOD_ID, "item/cigarette_strip"));
     }
 
     public void evenSimplerBlockItem(RegistryObject<Block> block) {

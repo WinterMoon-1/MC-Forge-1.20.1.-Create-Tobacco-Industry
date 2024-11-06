@@ -19,7 +19,25 @@ public class ModCreativeModTabs {
                     .title(Component.translatable("creative_tab.tobacco_industry"))
                     .displayItems((pParameters, pOutput) -> {
 
-                        pOutput.accept(ModItems.BASE_CIGARETTE.get());
+                        pOutput.accept(ModItems.CIGARETTE_ATTUNEMENT.get());
+                        pOutput.accept(ModItems.CIGARETTE_FADING.get());
+                        pOutput.accept(ModItems.CIGARETTE_GLOWING.get());
+                        pOutput.accept(ModItems.CIGARETTE_MAGNETISM.get());
+                        pOutput.accept(ModItems.CIGARETTE_REACHING.get());
+                        pOutput.accept(ModItems.CIGARETTE_RETURNING.get());
+                        pOutput.accept(ModItems.CIGARETTE_WISDOM.get());
+                        pOutput.accept(ModItems.CIGARETTE_HASTE.get());
+                        pOutput.accept(ModItems.CIGARETTE_ABSORPTION.get());
+                        pOutput.accept(ModItems.CIGARETTE_DOLPHINS_GRACE.get());
+                        pOutput.accept(ModItems.CIGARETTE_NIGHT_VISION.get());
+                        pOutput.accept(ModItems.CIGARETTE_INVISIBILITY.get());
+                        pOutput.accept(ModItems.CIGARETTE_FIRE_RESISTANCE.get());
+                        pOutput.accept(ModItems.CIGARETTE_LEAPING.get());
+                        pOutput.accept(ModItems.CIGARETTE_SWIFTNESS.get());
+                        pOutput.accept(ModItems.CIGARETTE_WATER_BREATHING.get());
+                        pOutput.accept(ModItems.CIGARETTE_HEALING.get());
+                        pOutput.accept(ModItems.CIGARETTE_REGENERATION.get());
+                        pOutput.accept(ModItems.CIGARETTE_STRENGTH.get());
 
                     })
                     .build());
