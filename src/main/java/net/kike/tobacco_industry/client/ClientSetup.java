@@ -1,7 +1,6 @@
 package net.kike.tobacco_industry.client;
 
 import net.kike.tobacco_industry.TobaccoIndustry;
-import net.kike.tobacco_industry.item.ModItems;
 import net.kike.tobacco_industry.item.custom.CigaretteItem;
 import net.kike.tobacco_industry.util.ModTags;
 import net.minecraft.client.Minecraft;
@@ -37,9 +36,3 @@ public class ClientSetup {
                 .toArray(Item[]::new));
     }
 }
-
-/*
-ForgeRegistries.ITEMS.getValues().stream()
-                    .filter(item -> item.getDefaultInstance().is(ModTags.Items.CIGARETTE))
-                    .toArray(Item[]::new));
- */
