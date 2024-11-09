@@ -49,7 +49,7 @@ public class TobaccoIndustry {
 
 
         modEventBus.addListener(this::commonSetup);
-        modEventBus.addListener(ClientSetup::onClientSetup);
+        modEventBus.addListener(ClientSetup::registerItemColors);
 
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
