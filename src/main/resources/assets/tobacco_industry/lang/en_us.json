@@ -1,5 +1,25 @@
 {
   "item.tobacco_industry.base_cigarette": "Cigarette",
+  "item.tobacco_industry.cigarette_attunement": "Attunement Cigarette",
+  "item.tobacco_industry.cigarette_fading": "Fading Cigarette",
+  "item.tobacco_industry.cigarette_glowing": "Glowing Cigarette",
+  "item.tobacco_industry.cigarette_magnetism": "Magnetism Cigarette",
+  "item.tobacco_industry.cigarette_reaching": "Reaching Cigarette",
+  "item.tobacco_industry.cigarette_returning": "Returning Cigarette",
+  "item.tobacco_industry.cigarette_wisdom": "Wisdom Cigarette",
+  "item.tobacco_industry.cigarette_haste": "Haste Cigarette",
+  "item.tobacco_industry.cigarette_absorption": "Absorption Cigarette",
+  "item.tobacco_industry.cigarette_dolphins_grace": "Dolphin’s Grace Cigarette",
+  "item.tobacco_industry.cigarette_night_vision": "Night Vision Cigarette",
+  "item.tobacco_industry.cigarette_invisibility": "Invisibility Cigarette",
+  "item.tobacco_industry.cigarette_fire_resistance": "Fire Resistance Cigarette",
+  "item.tobacco_industry.cigarette_leaping": "Leaping Cigarette",
+  "item.tobacco_industry.cigarette_swiftness": "Swiftness Cigarette",
+  "item.tobacco_industry.cigarette_water_breathing": "Water Breathing Cigarette",
+  "item.tobacco_industry.cigarette_healing": "Healing Cigarette",
+  "item.tobacco_industry.cigarette_regeneration": "Regeneration Cigarette",
+  "item.tobacco_industry.cigarette_strength": "Strength Cigarette",
+  "item.tobacco_industry.cigarette_slow_falling": "Slow Falling Cigarette",
 
   "creative_tab.tobacco_industry": "Create: Tobacco Industry"
 }

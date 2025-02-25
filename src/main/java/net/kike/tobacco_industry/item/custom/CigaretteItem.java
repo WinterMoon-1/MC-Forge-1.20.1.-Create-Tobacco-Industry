@@ -1,5 +1,6 @@
 package net.kike.tobacco_industry.item.custom;
 
+import net.kike.tobacco_industry.animation.ModAnimations;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -48,12 +49,19 @@ public class CigaretteItem extends Item {
 
     @Override
     public UseAnim getUseAnimation(ItemStack pStack) {
-        return UseAnim.DRINK;
+        return UseAnim.CUSTOM;
     }
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
-        return ItemUtils.startUsingInstantly(pLevel, pPlayer, pUsedHand);
+        // Trigger the smoking animation
+        ItemStack stack = pPlayer.getItemInHand(pUsedHand);
+        if (!pLevel.isClientSide) {
+            ModAnimations.SMOKING.setPlaying(true);
+            ModAnimations.SMOKING.setCurrentFrame(0);
+        }
+        pPlayer.startUsingItem(pUsedHand);
+        return InteractionResultHolder.success(stack);
     }
 
     @Override

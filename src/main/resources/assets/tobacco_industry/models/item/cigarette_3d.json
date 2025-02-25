@@ -1,22 +1,31 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "tobacco_industry:item/cigarette_3d",
-		"particle": "tobacco_industry:item/cigarette_3d"
+		"0": "tobacco_industry:item/cigarette_3d"
 	},
 	"elements": [
 		{
-			"from": [7, 7, 5],
-			"to": [8, 8, 9],
-			"rotation": {"angle": 0, "axis": "y", "origin": [7, 7, 7]},
+			"from": [7, 0, 4],
+			"to": [9, 2, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [6, 0, 5]},
 			"faces": {
-				"north": {"uv": [2, 2, 3, 3], "texture": "#0"},
-				"east": {"uv": [0, 0, 4, 1], "texture": "#0"},
-				"south": {"uv": [2, 3, 3, 4], "texture": "#0"},
-				"west": {"uv": [0, 1, 4, 2], "texture": "#0"},
-				"up": {"uv": [1, 6, 0, 2], "texture": "#0"},
-				"down": {"uv": [2, 2, 1, 6], "texture": "#0"}
+				"north": {"uv": [4, 4, 6, 6], "texture": "#0"},
+				"east": {"uv": [0, 0, 8, 2], "texture": "#0"},
+				"south": {"uv": [4, 6, 6, 8], "texture": "#0"},
+				"west": {"uv": [0, 2, 8, 4], "texture": "#0"},
+				"up": {"uv": [2, 12, 0, 4], "texture": "#0"},
+				"down": {"uv": [4, 4, 2, 12], "texture": "#0"}
 			}
 		}
-	]
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [66, 0, 0],
+			"translation": [0, 4.25, 6],
+			"scale": [0.8, 0.8, 0.8]
+		},
+		"firstperson_righthand": {
+			"translation": [1.25, 7.5, -0.5]
+		}
+	}
 }

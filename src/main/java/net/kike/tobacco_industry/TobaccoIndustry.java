@@ -1,5 +1,6 @@
 package net.kike.tobacco_industry;
 
+import net.kike.tobacco_industry.animation.ModAnimations;
 import net.kike.tobacco_industry.block.ModBlocks;
 import net.kike.tobacco_industry.block.entity.ModBlockEntities;
 import net.kike.tobacco_industry.client.ClientSetup;
@@ -46,6 +47,7 @@ public class TobaccoIndustry {
         ModMenuTypes.register(modEventBus);
         ModRecipes.register(modEventBus);
         ModEffects.register(modEventBus);
+
 
 
         modEventBus.addListener(this::commonSetup);

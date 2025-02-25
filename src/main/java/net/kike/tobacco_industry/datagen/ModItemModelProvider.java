@@ -4,6 +4,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.kike.tobacco_industry.TobaccoIndustry;
 import net.kike.tobacco_industry.item.ModItems;
+import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -75,7 +76,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         // Generates the main cigarette type model with separate transforms for different perspectives
         getBuilder(itemName)
-                .parent(new ModelFile.UncheckedModelFile(modLoc("item/generated")))
+                .parent(new ModelFile.UncheckedModelFile(mcLoc("item/generated")))
                 .customLoader(SeparateTransformsModelBuilder::begin)
                 .base(model3D)
                 .perspective(ItemDisplayContext.GUI, getBuilder(itemName + "_2d"))
