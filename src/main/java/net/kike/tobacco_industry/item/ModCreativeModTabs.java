@@ -19,6 +19,8 @@ public class ModCreativeModTabs {
                     .title(Component.translatable("creative_tab.tobacco_industry"))
                     .displayItems((pParameters, pOutput) -> {
 
+                        // CIGARETTES
+                        pOutput.accept(ModItems.BASE_CIGARETTE.get());
                         pOutput.accept(ModItems.CIGARETTE_ATTUNEMENT.get());
                         pOutput.accept(ModItems.CIGARETTE_FADING.get());
                         pOutput.accept(ModItems.CIGARETTE_GLOWING.get());
@@ -38,6 +40,7 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModItems.CIGARETTE_HEALING.get());
                         pOutput.accept(ModItems.CIGARETTE_REGENERATION.get());
                         pOutput.accept(ModItems.CIGARETTE_STRENGTH.get());
+                        pOutput.accept(ModItems.CIGARETTE_SLOW_FALLING.get());
 
                     })
                     .build());

@@ -43,7 +43,8 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                         ModItems.CIGARETTE_WATER_BREATHING.get(),
                         ModItems.CIGARETTE_HEALING.get(),
                         ModItems.CIGARETTE_REGENERATION.get(),
-                        ModItems.CIGARETTE_STRENGTH.get()
+                        ModItems.CIGARETTE_STRENGTH.get(),
+                        ModItems.CIGARETTE_SLOW_FALLING.get()
                 );
     }
 }

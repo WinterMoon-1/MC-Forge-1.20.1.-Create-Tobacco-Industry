@@ -1,0 +1,22 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "tobacco_industry:item/cigarette_3d",
+		"particle": "tobacco_industry:item/cigarette_3d"
+	},
+	"elements": [
+		{
+			"from": [7, 7, 5],
+			"to": [8, 8, 9],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7, 7, 7]},
+			"faces": {
+				"north": {"uv": [2, 2, 3, 3], "texture": "#0"},
+				"east": {"uv": [0, 0, 4, 1], "texture": "#0"},
+				"south": {"uv": [2, 3, 3, 4], "texture": "#0"},
+				"west": {"uv": [0, 1, 4, 2], "texture": "#0"},
+				"up": {"uv": [1, 6, 0, 2], "texture": "#0"},
+				"down": {"uv": [2, 2, 1, 6], "texture": "#0"}
+			}
+		}
+	]
+}
