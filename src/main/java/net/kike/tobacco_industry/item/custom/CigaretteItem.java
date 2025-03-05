@@ -1,6 +1,20 @@
 package net.kike.tobacco_industry.item.custom;
 
-import net.kike.tobacco_industry.animation.ModAnimations;
+import com.mojang.logging.LogUtils;
+import dev.kosmx.playerAnim.api.layered.AnimationStack;
+import dev.kosmx.playerAnim.api.layered.IAnimation;
+import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer;
+import dev.kosmx.playerAnim.api.layered.ModifierLayer;
+import dev.kosmx.playerAnim.core.data.KeyframeAnimation;
+import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationAccess;
+import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationRegistry;
+import net.kike.tobacco_industry.TobaccoIndustry;
+import net.kike.tobacco_industry.animation.AnimationHandler;
+import net.kike.tobacco_industry.animation.AnimationRegistry;
+import net.minecraft.client.player.AbstractClientPlayer;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -17,7 +31,7 @@ public class CigaretteItem extends Item {
     private final int baseColor;
     private final int stripColor;
     private final Supplier<MobEffectInstance> effectSupplier;
-    int USE_DURATION = 32;
+    private static final int USE_DURATION = 140;
 
     public CigaretteItem(Properties properties, Supplier<MobEffectInstance> effectSupplier, int baseColor, int stripColor) {
         super(properties);
@@ -49,37 +63,57 @@ public class CigaretteItem extends Item {
 
     @Override
     public UseAnim getUseAnimation(ItemStack pStack) {
-        return UseAnim.CUSTOM;
+        return UseAnim.NONE;
+    }
+
+    @Override
+    public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
+        return false;
     }
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
-        // Trigger the smoking animation
         ItemStack stack = pPlayer.getItemInHand(pUsedHand);
-        if (!pLevel.isClientSide) {
-            ModAnimations.SMOKING.setPlaying(true);
-            ModAnimations.SMOKING.setCurrentFrame(0);
+        LogUtils.getLogger().debug("Using cigarette");
+
+        if (pLevel.isClientSide && pPlayer instanceof AbstractClientPlayer clientPlayer) {
+            KeyframeAnimation animation = AnimationRegistry.animations.get("smoking");
+            LogUtils.getLogger().debug("In client. Smoking animation retrieved from Animation Registry");
+
+            if (animation != null) {
+                LogUtils.getLogger().debug("Animation is not null, playing animation");
+                    ModifierLayer<IAnimation> animationLayer = (ModifierLayer<IAnimation>) AnimationHandler.getAnimationLayer(clientPlayer);
+
+                animationLayer.setAnimation(new KeyframeAnimationPlayer(animation));
+
+                AnimationHandler.playAnimation(clientPlayer, animation);
+            } else {
+                LogUtils.getLogger().debug("Animation " + animation + " is null bro");
+            }
         }
-        pPlayer.startUsingItem(pUsedHand);
-        return InteractionResultHolder.success(stack);
+
+
+        // Smoking sound
+        pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(),
+                SoundEvents.CAMPFIRE_CRACKLE, pPlayer.getSoundSource(), 1.0F, 1.0F);
+
+        return InteractionResultHolder.consume(stack);
     }
 
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
         if (entity instanceof Player player) {
-            if (!level.isClientSide) {
-                applyEffect(player);
+            applyEffect(player); // Apply the effect
 
-                if (!player.getAbilities().instabuild) {
-                    stack.shrink(1);
-                }
+            if (!player.getAbilities().instabuild) {
+                stack.shrink(1); // Consume the cigarette
             }
 
-            entity.gameEvent(GameEvent.DRINK);
             player.awardStat(Stats.ITEM_USED.get(this));
         }
 
-        return stack;
+        LogUtils.getLogger().debug("Finished using cigarette");
+        return stack.isEmpty() ? ItemStack.EMPTY : stack;
     }
 
 }

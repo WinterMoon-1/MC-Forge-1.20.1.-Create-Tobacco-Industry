@@ -1,23 +1,23 @@
 package net.kike.tobacco_industry.client;
 
 import net.kike.tobacco_industry.TobaccoIndustry;
+import net.kike.tobacco_industry.animation.AnimationReloader;
 import net.kike.tobacco_industry.item.ModItems;
 import net.kike.tobacco_industry.item.custom.CigaretteItem;
 import net.kike.tobacco_industry.util.ModTags;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.item.ItemColor;
-import net.minecraft.core.Holder;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
-
-import java.util.Objects;
-import java.util.Optional;
 
 @Mod.EventBusSubscriber(modid = TobaccoIndustry.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientSetup {
+
+    // Changes the color of the cigarettes / cigars
     @SubscribeEvent
     public static void registerItemColors(RegisterColorHandlersEvent.Item event) {
         ItemColor cigaretteColorHandler = (stack, tintIndex) -> {
@@ -54,6 +54,11 @@ public class ClientSetup {
                 ModItems.CIGARETTE_STRENGTH.get(),
                 ModItems.CIGARETTE_SLOW_FALLING.get()
         );
+    }
+
+    @SubscribeEvent
+    public static void onRegisterReloadListener(RegisterClientReloadListenersEvent event) {
+        event.registerReloadListener(new AnimationReloader());
     }
 }
 
