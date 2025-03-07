@@ -1,0 +1,44 @@
+{
+  "version": 3,
+  "name": "lighting_cigarette",
+  "endTick": 40,
+  "isLoop": false,
+  "emote": {
+    "beginTick": 0,
+    "endTick": 40,
+    "isLoop": false,
+    "moves": [
+      {
+        "tick": 1,
+        "easing": "linear",
+        "leftArm": { "pitch": 0, "yaw": 0, "roll": 0 }
+      },
+      {
+        "tick": 7,
+        "easing": "linear",
+        "leftArm": { "pitch": -102, "yaw": 22, "roll": 12.15 }
+      },
+      {
+        "tick": 13,
+        "easing": "linear",
+        "leftArm": { "pitch": -111.2, "yaw": 17.25, "roll": -5.75 }
+      },
+      {
+        "tick": 17,
+        "easing": "linear",
+        "leftArm": { "pitch": -110, "yaw": 17, "roll": -1.5 }
+      },
+      {
+        "tick": 28,
+        "easing": "linear",
+        "leftArm": { "pitch": -102.5, "yaw": 22, "roll": 12.15 }
+      },
+      {
+        "tick": 32,
+        "easing": "linear",
+        "leftArm": { "pitch": -51.3, "yaw": 11, "roll": 6 }
+      }
+    ]
+  }
+}
+

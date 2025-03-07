@@ -1,9 +1,13 @@
 package net.kike.tobacco_industry.animation;
 
 import com.mojang.logging.LogUtils;
+import dev.kosmx.playerAnim.api.firstPerson.FirstPersonConfiguration;
+import dev.kosmx.playerAnim.api.firstPerson.FirstPersonMode;
 import dev.kosmx.playerAnim.api.layered.AnimationStack;
+import dev.kosmx.playerAnim.api.layered.IAnimation;
 import dev.kosmx.playerAnim.api.layered.KeyframeAnimationPlayer;
 import dev.kosmx.playerAnim.api.layered.ModifierLayer;
+import dev.kosmx.playerAnim.api.layered.modifier.AbstractFadeModifier;
 import dev.kosmx.playerAnim.core.data.KeyframeAnimation;
 import dev.kosmx.playerAnim.minecraftApi.PlayerAnimationAccess;
 import net.kike.tobacco_industry.TobaccoIndustry;
@@ -18,14 +22,27 @@ import java.util.Map;
 public class AnimationHandler {
     private static final Map<AbstractClientPlayer, AnimationStack> animations = new HashMap<>();
 
-    public static void playAnimation(AbstractClientPlayer player, KeyframeAnimation animation) {
+    public static void playAnimation(AbstractClientPlayer player, KeyframeAnimation animation, int layerLevel) {
         try {
             AnimationStack stack = PlayerAnimationAccess.getPlayerAnimLayer(player);
-            stack.removeLayer(0);
-            stack.addAnimLayer(10, new KeyframeAnimationPlayer(animation));
-            LogUtils.getLogger().debug("Animation layer: " + animation + " set for " + player);
+
+            KeyframeAnimationPlayer animPlayer = new KeyframeAnimationPlayer(animation);
+            animPlayer.setFirstPersonMode(FirstPersonMode.THIRD_PERSON_MODEL);
+            animPlayer.setFirstPersonConfiguration(new FirstPersonConfiguration().setShowLeftArm(true).setShowRightArm(true));
+
+            stack.addAnimLayer(layerLevel, new KeyframeAnimationPlayer(animation));
+
         } catch (IllegalArgumentException e) {
             LogUtils.getLogger().error("Failed to get animation layer for player: " + player.getName().getString(), e);
+        }
+    }
+
+    public static void stopAnimation(AbstractClientPlayer player, int layerLevel) {
+        try {
+            AnimationStack stack = PlayerAnimationAccess.getPlayerAnimLayer(player);
+            boolean removed = stack.removeLayer(layerLevel);
+        } catch (IllegalArgumentException e) {
+            LogUtils.getLogger().error("Failed to stop animation for player: " + player.getName().getString(), e);
         }
     }
 
