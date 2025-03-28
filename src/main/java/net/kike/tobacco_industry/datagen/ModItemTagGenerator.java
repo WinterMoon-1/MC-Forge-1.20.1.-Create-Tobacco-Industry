@@ -46,5 +46,30 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                         ModItems.CIGARETTE_STRENGTH.get(),
                         ModItems.CIGARETTE_SLOW_FALLING.get()
                 );
+
+        this.tag(ModTags.Items.CIGAR)
+                .add(
+                        ModItems.BASE_CIGAR.get(),
+                        ModItems.CIGAR_ATTUNEMENT.get(),
+                        ModItems.CIGAR_FADING.get(),
+                        ModItems.CIGAR_GLOWING.get(),
+                        ModItems.CIGAR_MAGNETISM.get(),
+                        ModItems.CIGAR_REACHING.get(),
+                        ModItems.CIGAR_RETURNING.get(),
+                        ModItems.CIGAR_WISDOM.get(),
+                        ModItems.CIGAR_HASTE.get(),
+                        ModItems.CIGAR_ABSORPTION.get(),
+                        ModItems.CIGAR_DOLPHINS_GRACE.get(),
+                        ModItems.CIGAR_NIGHT_VISION.get(),
+                        ModItems.CIGAR_INVISIBILITY.get(),
+                        ModItems.CIGAR_FIRE_RESISTANCE.get(),
+                        ModItems.CIGAR_LEAPING.get(),
+                        ModItems.CIGAR_SWIFTNESS.get(),
+                        ModItems.CIGAR_WATER_BREATHING.get(),
+                        ModItems.CIGAR_HEALING.get(),
+                        ModItems.CIGAR_REGENERATION.get(),
+                        ModItems.CIGAR_STRENGTH.get(),
+                        ModItems.CIGAR_SLOW_FALLING.get()
+                );
     }
 }

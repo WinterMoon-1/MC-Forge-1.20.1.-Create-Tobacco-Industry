@@ -1,10 +1,7 @@
 package net.kike.tobacco_industry.datagen;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import net.kike.tobacco_industry.TobaccoIndustry;
 import net.kike.tobacco_industry.item.ModItems;
-import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -16,10 +13,6 @@ import net.minecraftforge.client.model.generators.loaders.SeparateTransformsMode
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import org.checkerframework.common.returnsreceiver.qual.This;
-import net.minecraftforge.client.model.generators.ItemModelBuilder;
-import java.util.LinkedHashMap;
-import java.util.List;
 
 public class ModItemModelProvider extends ItemModelProvider {
 
@@ -29,6 +22,9 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+
+        simpleItem(ModItems.TOBACCO_SEEDS);
+        simpleItem(ModItems.TOBACCO_LEAF);
 
         cigaretteTypeItem(ModItems.BASE_CIGARETTE.get(), "cigarette");
         cigaretteTypeItem(ModItems.CIGARETTE_ATTUNEMENT.get(), "cigarette");
@@ -52,7 +48,27 @@ public class ModItemModelProvider extends ItemModelProvider {
         cigaretteTypeItem(ModItems.CIGARETTE_STRENGTH.get(), "cigarette");
         cigaretteTypeItem(ModItems.CIGARETTE_SLOW_FALLING.get(), "cigarette");
 
-
+        cigaretteTypeItem(ModItems.BASE_CIGAR.get(), "cigar");
+        cigaretteTypeItem(ModItems.CIGAR_ATTUNEMENT.get(), "cigar");
+        cigaretteTypeItem(ModItems.CIGAR_FADING.get(), "cigar");
+        cigaretteTypeItem(ModItems.CIGAR_GLOWING.get(), "cigar");
+        cigaretteTypeItem(ModItems.CIGAR_MAGNETISM.get(), "cigar");
+        cigaretteTypeItem(ModItems.CIGAR_REACHING.get(), "cigar");
+        cigaretteTypeItem(ModItems.CIGAR_RETURNING.get(), "cigar");
+        cigaretteTypeItem(ModItems.CIGAR_WISDOM.get(), "cigar");
+        cigaretteTypeItem(ModItems.CIGAR_HASTE.get(), "cigar");
+        cigaretteTypeItem(ModItems.CIGAR_ABSORPTION.get(), "cigar");
+        cigaretteTypeItem(ModItems.CIGAR_DOLPHINS_GRACE.get(), "cigar");
+        cigaretteTypeItem(ModItems.CIGAR_NIGHT_VISION.get(), "cigar");
+        cigaretteTypeItem(ModItems.CIGAR_INVISIBILITY.get(), "cigar");
+        cigaretteTypeItem(ModItems.CIGAR_FIRE_RESISTANCE.get(), "cigar");
+        cigaretteTypeItem(ModItems.CIGAR_LEAPING.get(), "cigar");
+        cigaretteTypeItem(ModItems.CIGAR_SWIFTNESS.get(), "cigar");
+        cigaretteTypeItem(ModItems.CIGAR_WATER_BREATHING.get(), "cigar");
+        cigaretteTypeItem(ModItems.CIGAR_HEALING.get(), "cigar");
+        cigaretteTypeItem(ModItems.CIGAR_REGENERATION.get(), "cigar");
+        cigaretteTypeItem(ModItems.CIGAR_STRENGTH.get(), "cigar");
+        cigaretteTypeItem(ModItems.CIGAR_SLOW_FALLING.get(), "cigar");
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
@@ -70,9 +86,10 @@ public class ModItemModelProvider extends ItemModelProvider {
                 .texture("layer1", modLoc("item/" + type + "_strip"));
 
 
-        //Creating a reference for the existing cigarette_3d json to avoid duplication problems
-        ItemModelBuilder model3D = getBuilder("cigarette_3d_reference")
-                .parent(new ModelFile.UncheckedModelFile(modLoc("item/cigarette_3d")));
+        //Creating a reference for the existing 3d json to avoid duplication problems
+        ItemModelBuilder model3D = getBuilder(type +"_3d_reference")
+                .parent(new ModelFile.UncheckedModelFile(modLoc("item/" + type + "_3d")));
+
 
         // Generates the main cigarette type model with separate transforms for different perspectives
         getBuilder(itemName)

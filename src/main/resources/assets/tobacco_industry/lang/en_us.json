@@ -1,4 +1,7 @@
 {
+  "item.tobacco_industry.tobacco_seeds": "Tobacco Seeds",
+  "item.tobacco_industry.tobacco_leaf": "Tobacco leaf",
+
   "item.tobacco_industry.base_cigarette": "Cigarette",
   "item.tobacco_industry.cigarette_attunement": "Attunement Cigarette",
   "item.tobacco_industry.cigarette_fading": "Fading Cigarette",
@@ -20,6 +23,28 @@
   "item.tobacco_industry.cigarette_regeneration": "Regeneration Cigarette",
   "item.tobacco_industry.cigarette_strength": "Strength Cigarette",
   "item.tobacco_industry.cigarette_slow_falling": "Slow Falling Cigarette",
+
+  "item.tobacco_industry.base_cigar": "Cigar",
+  "item.tobacco_industry.cigar_attunement": "Attunement Cigar",
+  "item.tobacco_industry.cigar_fading": "Fading Cigar",
+  "item.tobacco_industry.cigar_glowing": "Glowing Cigar",
+  "item.tobacco_industry.cigar_magnetism": "Magnetism Cigar",
+  "item.tobacco_industry.cigar_reaching": "Reaching Cigar",
+  "item.tobacco_industry.cigar_returning": "Returning Cigar",
+  "item.tobacco_industry.cigar_wisdom": "Wisdom Cigar",
+  "item.tobacco_industry.cigar_haste": "Haste Cigar",
+  "item.tobacco_industry.cigar_absorption": "Absorption Cigar",
+  "item.tobacco_industry.cigar_dolphins_grace": "Dolphin’s Grace Cigar",
+  "item.tobacco_industry.cigar_night_vision": "Night Vision Cigar",
+  "item.tobacco_industry.cigar_invisibility": "Invisibility Cigar",
+  "item.tobacco_industry.cigar_fire_resistance": "Fire Resistance Cigar",
+  "item.tobacco_industry.cigar_leaping": "Leaping Cigar",
+  "item.tobacco_industry.cigar_swiftness": "Swiftness Cigar",
+  "item.tobacco_industry.cigar_water_breathing": "Water Breathing Cigar",
+  "item.tobacco_industry.cigar_healing": "Healing Cigar",
+  "item.tobacco_industry.cigar_regeneration": "Regeneration Cigar",
+  "item.tobacco_industry.cigar_strength": "Strength Cigar",
+  "item.tobacco_industry.cigar_slow_falling": "Slow Falling Cigar",
 
   "creative_tab.tobacco_industry": "Create: Tobacco Industry"
 }

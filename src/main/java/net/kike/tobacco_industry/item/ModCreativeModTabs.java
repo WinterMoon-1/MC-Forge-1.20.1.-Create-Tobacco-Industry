@@ -19,6 +19,10 @@ public class ModCreativeModTabs {
                     .title(Component.translatable("creative_tab.tobacco_industry"))
                     .displayItems((pParameters, pOutput) -> {
 
+                        // TOBACCO CRAFTING MATERIALS
+                        pOutput.accept(ModItems.TOBACCO_SEEDS.get());
+                        pOutput.accept(ModItems.TOBACCO_LEAF.get());
+
                         // CIGARETTES
                         pOutput.accept(ModItems.BASE_CIGARETTE.get());
                         pOutput.accept(ModItems.CIGARETTE_ATTUNEMENT.get());
@@ -41,6 +45,29 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModItems.CIGARETTE_REGENERATION.get());
                         pOutput.accept(ModItems.CIGARETTE_STRENGTH.get());
                         pOutput.accept(ModItems.CIGARETTE_SLOW_FALLING.get());
+
+                        // CIGARS
+                        pOutput.accept(ModItems.BASE_CIGAR.get());
+                        pOutput.accept(ModItems.CIGAR_ATTUNEMENT.get());
+                        pOutput.accept(ModItems.CIGAR_FADING.get());
+                        pOutput.accept(ModItems.CIGAR_GLOWING.get());
+                        pOutput.accept(ModItems.CIGAR_MAGNETISM.get());
+                        pOutput.accept(ModItems.CIGAR_REACHING.get());
+                        pOutput.accept(ModItems.CIGAR_RETURNING.get());
+                        pOutput.accept(ModItems.CIGAR_WISDOM.get());
+                        pOutput.accept(ModItems.CIGAR_HASTE.get());
+                        pOutput.accept(ModItems.CIGAR_ABSORPTION.get());
+                        pOutput.accept(ModItems.CIGAR_DOLPHINS_GRACE.get());
+                        pOutput.accept(ModItems.CIGAR_NIGHT_VISION.get());
+                        pOutput.accept(ModItems.CIGAR_INVISIBILITY.get());
+                        pOutput.accept(ModItems.CIGAR_FIRE_RESISTANCE.get());
+                        pOutput.accept(ModItems.CIGAR_LEAPING.get());
+                        pOutput.accept(ModItems.CIGAR_SWIFTNESS.get());
+                        pOutput.accept(ModItems.CIGAR_WATER_BREATHING.get());
+                        pOutput.accept(ModItems.CIGAR_HEALING.get());
+                        pOutput.accept(ModItems.CIGAR_REGENERATION.get());
+                        pOutput.accept(ModItems.CIGAR_STRENGTH.get());
+                        pOutput.accept(ModItems.CIGAR_SLOW_FALLING.get());
 
                     })
                     .build());

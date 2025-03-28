@@ -5,6 +5,7 @@ import net.kike.tobacco_industry.animation.AnimationHandler;
 import net.kike.tobacco_industry.animation.AnimationRegistry;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
@@ -15,10 +16,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-
 import java.util.function.Supplier;
 
-public class CigaretteItem extends Item {
+public class CigarItem extends Item {
     private final int baseColor;
     private final int stripColor;
     private final Supplier<MobEffectInstance> effectSupplier;
@@ -26,7 +26,7 @@ public class CigaretteItem extends Item {
     private static final int SMOKING_LAYER = 11;
     private static final int LIGHTING_LAYER = 10;
 
-    public CigaretteItem(Properties properties, Supplier<MobEffectInstance> effectSupplier, int baseColor, int stripColor) {
+    public CigarItem(Properties properties, Supplier<MobEffectInstance> effectSupplier, int baseColor, int stripColor) {
         super(properties);
         this.effectSupplier = effectSupplier;
         this.baseColor = baseColor;
@@ -47,7 +47,6 @@ public class CigaretteItem extends Item {
     public int getStripColor() {
         return stripColor;
     }
-
 
     @Override
     public int getUseDuration(ItemStack pStack) {
@@ -100,7 +99,7 @@ public class CigaretteItem extends Item {
             if (useTime >= 40) {
                 applyEffect(player);
                 if (!player.getAbilities().instabuild) {
-                    stack.shrink(1);
+                    stack.hurtAndBreak(1, player, (user) -> {});
                 }
                 player.awardStat(Stats.ITEM_USED.get(this));
 
@@ -125,16 +124,16 @@ public class CigaretteItem extends Item {
             applyEffect(player); // Apply the effect
 
             if (!player.getAbilities().instabuild) {
-                stack.shrink(1); // Consume the cigarette
+                stack.hurtAndBreak(1, player, (user) -> {});
             }
+
 
             player.stopUsingItem();
             spawnSmokeParticles(player);
-            entity.stopUsingItem();
             player.awardStat(Stats.ITEM_USED.get(this));
         }
 
-        return stack.isEmpty() ? ItemStack.EMPTY : stack;
+        return stack.getDamageValue() >= stack.getMaxDamage() ? ItemStack.EMPTY : stack;
     }
 
     private void stopAnimation(Player player, int animLayer) {
@@ -151,21 +150,21 @@ public class CigaretteItem extends Item {
             Vec3 particlePos = playerPos.add(lookDirection.scale(0.5));
 
             // Smoke particle "ejection" logic
-            double speed = 0.02;
+            double speed = 0.05;
             double vxBase = lookDirection.x * speed;
             double vyBase = lookDirection.y * speed;
             double vzBase = lookDirection.z * speed;
 
             for (int i = 0; i < 10; i++) {
-                double vx = vxBase + (Math.random() - 0.5) * 0.01;
-                double vy = vyBase + (Math.random() - 0.5) * 0.05;
-                double vz = vzBase + (Math.random() - 0.5) * 0.01;
+                double vx = vxBase + (Math.random() - 0.5) * 0.005;
+                double vy = vyBase + (Math.random() - 0.5) * 0.025;
+                double vz = vzBase + (Math.random() - 0.5) * 0.005;
 
                 player.level().addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE,
                         particlePos.x + (Math.random() - 0.5) * 0.2,
                         particlePos.y + (Math.random() - 0.2) * 0.2,
                         particlePos.z + (Math.random() - 0.5) * 0.2,
-                        vx, vy + 0.1, vz);
+                        vx, vy + 0.05, vz);
             }
         }
     }

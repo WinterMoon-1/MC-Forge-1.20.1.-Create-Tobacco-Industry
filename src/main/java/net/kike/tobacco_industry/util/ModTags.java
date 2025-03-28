@@ -18,6 +18,7 @@ public class ModTags {
 
     public static class Items {
         public static final TagKey<Item> CIGARETTE = tag("cigarette");
+        public static final TagKey<Item> CIGAR = tag("cigar");
 
         private static TagKey<Item> tag(String name) {
             return ItemTags.create(new ResourceLocation(TobaccoIndustry.MOD_ID, name));
