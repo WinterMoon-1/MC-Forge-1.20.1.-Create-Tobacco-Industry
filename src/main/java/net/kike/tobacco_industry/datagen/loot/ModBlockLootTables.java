@@ -14,6 +14,7 @@ import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyExplosionDecay;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.AnyOfCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
@@ -29,12 +30,18 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-        LootItemCondition.Builder tobaccoLeavesCondition = LootItemBlockStatePropertyCondition
+        LootItemCondition.Builder age11 = LootItemBlockStatePropertyCondition
+                .hasBlockStateProperties(ModBlocks.TOBACCO_CROP.get())
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(TobaccoCropBlock.AGE, 11));
+
+        LootItemCondition.Builder age18 = LootItemBlockStatePropertyCondition
                 .hasBlockStateProperties(ModBlocks.TOBACCO_CROP.get())
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(TobaccoCropBlock.AGE, 18));
 
+        LootItemCondition.Builder anyMature = AnyOfCondition.anyOf(age11, age18);
+
         this.add(ModBlocks.TOBACCO_CROP.get(), createTobaccoCropDrops(ModItems.TOBACCO_LEAF.get(),
-                ModItems.TOBACCO_SEEDS.get(), tobaccoLeavesCondition));
+                ModItems.TOBACCO_SEEDS.get(), anyMature));
 
     }
 
@@ -43,22 +50,22 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         return ModBlocks.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
     }
 
-    protected LootTable.Builder createTobaccoCropDrops(Item cropItem, Item seedItem, LootItemCondition.Builder condition) {
+    protected LootTable.Builder createTobaccoCropDrops(Item cropItem, Item seedItem, LootItemCondition.Builder ageCondition) {
         return LootTable.lootTable()
-                .apply(ApplyExplosionDecay.explosionDecay()) // Handles explosion-related loot drops
+                .apply(ApplyExplosionDecay.explosionDecay())
                 .withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
-                        .add(AlternativesEntry.alternatives( // Groups conditional items under alternatives
-                                LootItem.lootTableItem(cropItem)
-                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 5))) // Leaves drop 2-5
-                                        .when(condition),
-                                LootItem.lootTableItem(seedItem)
-                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 3))) // Seeds drop 1-3
-                                        .when(condition)
-                        )))
+                        .add(LootItem.lootTableItem(ModItems.TOBACCO_LEAF.get())
+                                .when(ageCondition)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)))))
                 .withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1))
-                        .add(LootItem.lootTableItem(seedItem) // Guaranteed 1 seed
+                        .add(LootItem.lootTableItem(ModItems.TOBACCO_SEEDS.get())
+                                .when(ageCondition)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 1)))))
+                .withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(ModItems.TOBACCO_SEEDS.get())
                                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))));
     }
 }
