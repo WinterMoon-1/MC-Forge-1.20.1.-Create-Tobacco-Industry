@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.Containers;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
@@ -18,12 +19,17 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.IPlantable;
-import org.jetbrains.annotations.Debug;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -73,9 +79,9 @@ public class TobaccoCropBlock extends CropBlock {
             if (canGrow(pState, pLevel, pPos)) {
                 float growthSpeed = getGrowthSpeed(this, pLevel, pPos); // TODO: Modify growth speed
 
-                if (net.minecraftforge.common.ForgeHooks.onCropsGrowPre(pLevel, pPos, pState, pRandom.nextInt((int)(25.0F / growthSpeed) + 1) == 0)) {
+                if (ForgeHooks.onCropsGrowPre(pLevel, pPos, pState, pRandom.nextInt((int)(25.0F / growthSpeed) + 1) == 0)) {
                     growTobaccoPlant(pLevel, pPos, pState, 1);
-                    net.minecraftforge.common.ForgeHooks.onCropsGrowPost(pLevel, pPos, pState);
+                    ForgeHooks.onCropsGrowPost(pLevel, pPos, pState);
                 }
             }
         }
@@ -134,29 +140,39 @@ public class TobaccoCropBlock extends CropBlock {
     }
 
     @Override
-    public void playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
-        int age = state.getValue(AGE);
-        System.out.println("The crop age: " + age + " and SSSA: " + SECOND_STAGE_SPAWN_AGE);
-        boolean check = age >= SECOND_STAGE_SPAWN_AGE;
-        System.out.println("So age >= SECOND_STAGE_SPAWN_AGE = " + check);
-
-        // If the plant has two stages
-        if (age >= SECOND_STAGE_SPAWN_AGE) {
-            BlockPos otherHalfPos = age >= FIRST_STAGE_MAX_AGE ? pos.below() : pos.above();
+    public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
+        if (state.getValue(AGE) >= SECOND_STAGE_SPAWN_AGE) {
+            BlockPos otherHalfPos = state.getValue(AGE) > FIRST_STAGE_MAX_AGE ? pos.below() : pos.above();
             BlockState otherHalfState = level.getBlockState(otherHalfPos);
-            System.out.println("The other half is " + otherHalfPos);
 
-            // Check if it's a tobacco crop to avoid bugs
             if (otherHalfState.getBlock() == this) {
-                level.setBlock(otherHalfPos, Blocks.AIR.defaultBlockState(), 35);
+                // Get the other block's drops if the player is in survival
+                if (!player.isCreative()) {
+                    if (!level.isClientSide && level instanceof ServerLevel serverLevel) {
+                        BlockEntity be = level.getBlockEntity(otherHalfPos);
+
+                        LootParams.Builder lootParamsBuilder = new LootParams.Builder(serverLevel)
+                                .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(otherHalfPos))
+                                .withParameter(LootContextParams.BLOCK_STATE, otherHalfState)
+                                .withParameter(LootContextParams.TOOL, player.getMainHandItem())
+                                .withParameter(LootContextParams.THIS_ENTITY, player);
+
+                        if (be != null) {
+                            lootParamsBuilder.withOptionalParameter(LootContextParams.BLOCK_ENTITY, be);
+                        }
+
+                        List<ItemStack> drops = otherHalfState.getBlock().getDrops(otherHalfState, lootParamsBuilder);
+                        for (ItemStack drop : drops) {
+                            Containers.dropItemStack(level, otherHalfPos.getX(), otherHalfPos.getY(), otherHalfPos.getZ(), drop);
+                        }
+                    }
+                }
+                // Delete the block
                 level.levelEvent(player, 2001, otherHalfPos, Block.getId(otherHalfState));
+                level.setBlock(otherHalfPos, Blocks.AIR.defaultBlockState(), 35);
             }
         }
-
-        System.out.println("The broken half is " + pos);
-
-        popResource(level, pos, new ItemStack(ModItems.TOBACCO_SEEDS.get(), 1));
-        super.playerWillDestroy(level, pos, state, player);
+        return super.onDestroyedByPlayer(state, level, pos, player, willHarvest, fluid);
     }
 
     public boolean isUpperHalf(BlockState state) {
