@@ -1,6 +1,8 @@
 {
   "item.tobacco_industry.tobacco_seeds": "Tobacco Seeds",
-  "item.tobacco_industry.tobacco_leaf": "Tobacco leaf",
+  "item.tobacco_industry.tobacco_leaf": "Tobacco Leaf",
+  "item.tobacco_industry.dried_tobacco_leaf": "Dried Tobacco Leaf",
+  "item.tobacco_industry.tobacco_powder": "Tobacco Powder",
 
   "item.tobacco_industry.base_cigarette": "Cigarette",
   "item.tobacco_industry.cigarette_attunement": "Attunement Cigarette",

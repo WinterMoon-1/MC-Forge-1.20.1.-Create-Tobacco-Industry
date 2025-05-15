@@ -21,6 +21,8 @@ public class ModCreativeModTabs {
                         // TOBACCO CRAFTING MATERIALS
                         pOutput.accept(ModItems.TOBACCO_SEEDS.get());
                         pOutput.accept(ModItems.TOBACCO_LEAF.get());
+                        pOutput.accept(ModItems.DRIED_TOBACCO_LEAF.get());
+                        pOutput.accept(ModItems.TOBACCO_POWDER.get());
 
                         // CIGARETTES
                         pOutput.accept(ModItems.BASE_CIGARETTE.get());

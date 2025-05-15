@@ -25,6 +25,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(ModItems.TOBACCO_SEEDS);
         simpleItem(ModItems.TOBACCO_LEAF);
+        simpleItem(ModItems.DRIED_TOBACCO_LEAF);
+        simpleItem(ModItems.TOBACCO_POWDER);
 
         cigaretteTypeItem(ModItems.BASE_CIGARETTE.get(), "cigarette");
         cigaretteTypeItem(ModItems.CIGARETTE_ATTUNEMENT.get(), "cigarette");

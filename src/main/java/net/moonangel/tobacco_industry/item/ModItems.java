@@ -27,6 +27,10 @@ public class ModItems {
             () -> new ItemNameBlockItem(ModBlocks.TOBACCO_CROP.get(), new Item.Properties()));
     public static final RegistryObject<Item> TOBACCO_LEAF = ITEMS.register("tobacco_leaf",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> DRIED_TOBACCO_LEAF = ITEMS.register("dried_tobacco_leaf",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> TOBACCO_POWDER = ITEMS.register("tobacco_powder",
+            () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> BASE_CIGARETTE = registerCigarette("base_cigarette", () -> null,0xFFFFFF, 0xDE832F);
     public static final RegistryObject<Item> CIGARETTE_HASTE = registerCigarette("cigarette_haste", () -> new MobEffectInstance(MobEffects.DIG_SPEED, 600, 0), 0xFFFFFF, 0xFFE11A);
