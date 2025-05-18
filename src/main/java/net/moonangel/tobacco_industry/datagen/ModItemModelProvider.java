@@ -71,6 +71,29 @@ public class ModItemModelProvider extends ItemModelProvider {
         cigaretteTypeItem(ModItems.CIGAR_REGENERATION.get(), "cigar");
         cigaretteTypeItem(ModItems.CIGAR_STRENGTH.get(), "cigar");
         cigaretteTypeItem(ModItems.CIGAR_SLOW_FALLING.get(), "cigar");
+
+        mixItem(ModItems.BASE_MIX.get());
+        mixItem(ModItems.MIX_ATTUNEMENT.get());
+        mixItem(ModItems.MIX_FADING.get());
+        mixItem(ModItems.MIX_GLOWING.get());
+        mixItem(ModItems.MIX_MAGNETISM.get());
+        mixItem(ModItems.MIX_REACHING.get());
+        mixItem(ModItems.MIX_RETURNING.get());
+        mixItem(ModItems.MIX_WISDOM.get());
+        mixItem(ModItems.MIX_HASTE.get());
+        mixItem(ModItems.MIX_ABSORPTION.get());
+        mixItem(ModItems.MIX_DOLPHINS_GRACE.get());
+        mixItem(ModItems.MIX_NIGHT_VISION.get());
+        mixItem(ModItems.MIX_INVISIBILITY.get());
+        mixItem(ModItems.MIX_FIRE_RESISTANCE.get());
+        mixItem(ModItems.MIX_LEAPING.get());
+        mixItem(ModItems.MIX_SWIFTNESS.get());
+        mixItem(ModItems.MIX_WATER_BREATHING.get());
+        mixItem(ModItems.MIX_HEALING.get());
+        mixItem(ModItems.MIX_REGENERATION.get());
+        mixItem(ModItems.MIX_STRENGTH.get());
+        mixItem(ModItems.MIX_SLOW_FALLING.get());
+
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
@@ -101,5 +124,13 @@ public class ModItemModelProvider extends ItemModelProvider {
                 .perspective(ItemDisplayContext.GUI, getBuilder(itemName + "_2d"))
                 .perspective(ItemDisplayContext.GROUND, getBuilder(itemName + "_2d"))
                 .perspective(ItemDisplayContext.FIXED, getBuilder(itemName + "_2d"));
+    }
+
+    private void mixItem(Item item) {
+        String itemName = ForgeRegistries.ITEMS.getKey(item).getPath();
+
+        withExistingParent(itemName, mcLoc("item/generated"))
+                .texture("layer0", new ResourceLocation(TobaccoIndustry.MOD_ID, "item/mix_base"))
+                .texture("layer1", new ResourceLocation(TobaccoIndustry.MOD_ID, "item/mix_strip"));
     }
 }

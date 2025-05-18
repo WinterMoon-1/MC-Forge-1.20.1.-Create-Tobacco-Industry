@@ -69,5 +69,30 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                         ModItems.CIGAR_STRENGTH.get(),
                         ModItems.CIGAR_SLOW_FALLING.get()
                 );
+
+        this.tag(ModTags.Items.TOBACCO_MIX)
+                .add(
+                        ModItems.BASE_MIX.get(),
+                        ModItems.MIX_ATTUNEMENT.get(),
+                        ModItems.MIX_FADING.get(),
+                        ModItems.MIX_GLOWING.get(),
+                        ModItems.MIX_MAGNETISM.get(),
+                        ModItems.MIX_REACHING.get(),
+                        ModItems.MIX_RETURNING.get(),
+                        ModItems.MIX_WISDOM.get(),
+                        ModItems.MIX_HASTE.get(),
+                        ModItems.MIX_ABSORPTION.get(),
+                        ModItems.MIX_DOLPHINS_GRACE.get(),
+                        ModItems.MIX_NIGHT_VISION.get(),
+                        ModItems.MIX_INVISIBILITY.get(),
+                        ModItems.MIX_FIRE_RESISTANCE.get(),
+                        ModItems.MIX_LEAPING.get(),
+                        ModItems.MIX_SWIFTNESS.get(),
+                        ModItems.MIX_WATER_BREATHING.get(),
+                        ModItems.MIX_HEALING.get(),
+                        ModItems.MIX_REGENERATION.get(),
+                        ModItems.MIX_STRENGTH.get(),
+                        ModItems.MIX_SLOW_FALLING.get()
+                );
     }
 }

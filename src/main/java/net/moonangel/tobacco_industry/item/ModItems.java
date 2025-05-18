@@ -16,6 +16,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import net.moonangel.tobacco_industry.item.custom.TobaccoMixItem;
 
 import java.util.function.Supplier;
 
@@ -76,7 +77,30 @@ public class ModItems {
     public static final RegistryObject<Item> CIGAR_RETURNING = registerCigar("cigar_returning", () -> new MobEffectInstance(ModEffects.RETURNING.get(), 1200, 0), 0xFFFFFF, 0xE7D684);
     public static final RegistryObject<Item> CIGAR_WISDOM = registerCigar("cigar_wisdom", () -> new MobEffectInstance(ModEffects.WISDOM.get(), 1200, 0), 0xFFFFFF, 0xE7D684);
 
-    private static RegistryObject<Item> registerCigarette(String name, Supplier<MobEffectInstance> effectSupplier, int baseColor, int stripColor) {
+    public static final RegistryObject<Item> BASE_MIX = registerMix("base_mix", () -> null, 0xFFFFFF, 0xDE832F);
+    public static final RegistryObject<Item> MIX_HASTE = registerMix("mix_haste", () -> new MobEffectInstance(MobEffects.DIG_SPEED, 1200, 0), 0xFFFFFF, 0xFFE11A);
+    public static final RegistryObject<Item> MIX_ABSORPTION = registerMix("mix_absorption", () -> new MobEffectInstance(MobEffects.ABSORPTION, 1200, 0), 0xFFFFFF, 0x00ABD8);
+    public static final RegistryObject<Item> MIX_DOLPHINS_GRACE = registerMix("mix_dolphins_grace", () -> new MobEffectInstance(MobEffects.DOLPHINS_GRACE, 1200, 0), 0xFFFFFF, 0xFFFFFF);
+    public static final RegistryObject<Item> MIX_NIGHT_VISION = registerMix("mix_night_vision", () -> new MobEffectInstance(MobEffects.NIGHT_VISION, 1200, 0), 0xFFFFFF, 0xC2FF66);
+    public static final RegistryObject<Item> MIX_INVISIBILITY = registerMix("mix_invisibility", () -> new MobEffectInstance(MobEffects.INVISIBILITY, 1200, 0), 0xFFFFFF, 0xF6F6F6);
+    public static final RegistryObject<Item> MIX_FIRE_RESISTANCE = registerMix("mix_fire_resistance", () -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 1200, 0), 0xFFFFFF, 0xFF9900);
+    public static final RegistryObject<Item> MIX_LEAPING = registerMix("mix_leaping", () -> new MobEffectInstance(MobEffects.JUMP, 1200, 0), 0xFFFFFF, 0xFDFF84);
+    public static final RegistryObject<Item> MIX_SWIFTNESS = registerMix("mix_swiftness", () -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1200, 0), 0xFFFFFF, 0x33EBFF);
+    public static final RegistryObject<Item> MIX_WATER_BREATHING = registerMix("mix_water_breathing", () -> new MobEffectInstance(MobEffects.WATER_BREATHING, 1200, 0), 0xFFFFFF, 0x98DAC0);
+    public static final RegistryObject<Item> MIX_HEALING = registerMix("mix_healing", () -> new MobEffectInstance(MobEffects.HEAL, 1200, 0), 0xFFFFFF, 0xF82423);
+    public static final RegistryObject<Item> MIX_REGENERATION = registerMix("mix_regeneration", () -> new MobEffectInstance(MobEffects.REGENERATION, 1200, 0), 0xFFFFFF, 0xCD5CAB);
+    public static final RegistryObject<Item> MIX_STRENGTH = registerMix("mix_strength", () -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, 1200, 0), 0xFFFFFF, 0xFFC700);
+    public static final RegistryObject<Item> MIX_SLOW_FALLING = registerMix("mix_slow_falling", () -> new MobEffectInstance(MobEffects.SLOW_FALLING, 1200, 0), 0xFFFFFF, 0xF3CFB9);
+    public static final RegistryObject<Item> MIX_ATTUNEMENT = registerMix("mix_attunement", () -> new MobEffectInstance(ModEffects.ATTUNEMENT.get(), 1200, 0), 0xFFFFFF, 0xB088E7);
+    public static final RegistryObject<Item> MIX_FADING = registerMix("mix_fading", () -> new MobEffectInstance(ModEffects.FADING.get(), 1200, 0), 0xFFFFFF, 0xD0F1F1);
+    public static final RegistryObject<Item> MIX_GLOWING = registerMix("mix_glowing", () -> new MobEffectInstance(ModEffects.GLOWING.get(), 1200, 0), 0xFFFFFF, 0x7BF4B8);
+    public static final RegistryObject<Item> MIX_MAGNETISM = registerMix("mix_magnetism", () -> new MobEffectInstance(ModEffects.MAGNETISM.get(), 1200, 0), 0xFFFFFF, 0xA6BFBB);
+    public static final RegistryObject<Item> MIX_REACHING = registerMix("mix_reaching", () -> new MobEffectInstance(ModEffects.REACHING.get(), 1200, 0), 0xFFFFFF, 0x8A6628);
+    public static final RegistryObject<Item> MIX_RETURNING = registerMix("mix_returning", () -> new MobEffectInstance(ModEffects.RETURNING.get(), 1200, 0), 0xFFFFFF, 0xE7D684);
+    public static final RegistryObject<Item> MIX_WISDOM = registerMix("mix_wisdom", () -> new MobEffectInstance(ModEffects.WISDOM.get(), 1200, 0), 0xFFFFFF, 0xE7D684);
+
+
+    private static RegistryObject<Item> registerCigarette(String name, Supplier<MobEffectInstance> effectSupplier, int baseColour, int stripColour) {
         Properties properties = new Properties()
                 .stacksTo(16)
                 .food(new FoodProperties.Builder()
@@ -85,10 +109,10 @@ public class ModItems {
                         .alwaysEat()
                         .build());
 
-        return ITEMS.register(name, () -> new CigaretteItem(properties, effectSupplier, baseColor, stripColor));
+        return ITEMS.register(name, () -> new CigaretteItem(properties, effectSupplier, baseColour, stripColour));
     }
 
-    private static RegistryObject<Item> registerCigar(String name, Supplier<MobEffectInstance> effectSupplier, int baseColor, int stripColor) {
+    private static RegistryObject<Item> registerCigar(String name, Supplier<MobEffectInstance> effectSupplier, int baseColour, int stripColour) {
         Properties properties = new Properties()
                 .stacksTo(1)
                 .durability(20)
@@ -98,7 +122,14 @@ public class ModItems {
                         .alwaysEat()
                         .build());
 
-        return ITEMS.register(name, () -> new CigarItem(properties, effectSupplier, baseColor, stripColor));
+        return ITEMS.register(name, () -> new CigarItem(properties, effectSupplier, baseColour, stripColour));
+    }
+
+    private static RegistryObject<Item> registerMix(String name, Supplier<MobEffectInstance> effectSupplier, int baseColour, int stripColour) {
+        Properties properties = new Properties()
+                .stacksTo(16);
+
+        return ITEMS.register(name, () -> new TobaccoMixItem(properties, effectSupplier, baseColour, stripColour));
     }
 
     public static void register(IEventBus eventBus) {

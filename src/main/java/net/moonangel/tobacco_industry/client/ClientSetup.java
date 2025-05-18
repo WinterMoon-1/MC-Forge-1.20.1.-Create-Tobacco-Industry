@@ -5,6 +5,7 @@ import net.moonangel.tobacco_industry.animation.AnimationReloader;
 import net.moonangel.tobacco_industry.item.ModItems;
 import net.moonangel.tobacco_industry.item.custom.CigarItem;
 import net.moonangel.tobacco_industry.item.custom.CigaretteItem;
+import net.moonangel.tobacco_industry.item.custom.TobaccoMixItem;
 import net.moonangel.tobacco_industry.util.ModTags;
 import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.world.item.Item;
@@ -21,12 +22,14 @@ public class ClientSetup {
     @SubscribeEvent
     public static void registerItemColors(RegisterColorHandlersEvent.Item event) {
         ItemColor cigaretteColorHandler = (stack, tintIndex) -> {
-            if(stack.is(ModTags.Items.CIGARETTE) || stack.is(ModTags.Items.CIGAR)) {
+            if(stack.is(ModTags.Items.CIGARETTE) || stack.is(ModTags.Items.CIGAR) || stack.is(ModTags.Items.TOBACCO_MIX)) {
                 Item item = stack.getItem();
                 if (item instanceof CigaretteItem cigaretteItem) {
-                    return (tintIndex == 1) ? cigaretteItem.getStripColor() : cigaretteItem.getBaseColor();
+                    return (tintIndex == 1) ? cigaretteItem.getStripColour() : cigaretteItem.getBaseColour();
                 } else if (item instanceof CigarItem cigarItem) {
-                    return (tintIndex == 1) ? cigarItem.getStripColor() : cigarItem.getBaseColor();
+                    return (tintIndex == 1) ? cigarItem.getStripColour() : cigarItem.getBaseColour();
+                } else if (item instanceof TobaccoMixItem tobaccoMixItem) {
+                    return (tintIndex == 1) ? tobaccoMixItem.getStripColor() : tobaccoMixItem.getBaseColour();
                 }
             }
 
@@ -78,7 +81,30 @@ public class ClientSetup {
                 ModItems.CIGAR_HEALING.get(),
                 ModItems.CIGAR_REGENERATION.get(),
                 ModItems.CIGAR_STRENGTH.get(),
-                ModItems.CIGAR_SLOW_FALLING.get()
+                ModItems.CIGAR_SLOW_FALLING.get(),
+
+                // Mixes
+                ModItems.BASE_MIX.get(),
+                ModItems.MIX_ATTUNEMENT.get(),
+                ModItems.MIX_FADING.get(),
+                ModItems.MIX_GLOWING.get(),
+                ModItems.MIX_MAGNETISM.get(),
+                ModItems.MIX_REACHING.get(),
+                ModItems.MIX_RETURNING.get(),
+                ModItems.MIX_WISDOM.get(),
+                ModItems.MIX_HASTE.get(),
+                ModItems.MIX_ABSORPTION.get(),
+                ModItems.MIX_DOLPHINS_GRACE.get(),
+                ModItems.MIX_NIGHT_VISION.get(),
+                ModItems.MIX_INVISIBILITY.get(),
+                ModItems.MIX_FIRE_RESISTANCE.get(),
+                ModItems.MIX_LEAPING.get(),
+                ModItems.MIX_SWIFTNESS.get(),
+                ModItems.MIX_WATER_BREATHING.get(),
+                ModItems.MIX_HEALING.get(),
+                ModItems.MIX_REGENERATION.get(),
+                ModItems.MIX_STRENGTH.get(),
+                ModItems.MIX_SLOW_FALLING.get()
         );
     }
 

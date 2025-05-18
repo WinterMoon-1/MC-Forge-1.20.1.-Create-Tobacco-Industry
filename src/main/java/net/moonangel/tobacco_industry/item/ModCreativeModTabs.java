@@ -70,6 +70,29 @@ public class ModCreativeModTabs {
                         pOutput.accept(ModItems.CIGAR_STRENGTH.get());
                         pOutput.accept(ModItems.CIGAR_SLOW_FALLING.get());
 
+                        // MIXES
+                        pOutput.accept(ModItems.BASE_MIX.get());
+                        pOutput.accept(ModItems.MIX_ATTUNEMENT.get());
+                        pOutput.accept(ModItems.MIX_FADING.get());
+                        pOutput.accept(ModItems.MIX_GLOWING.get());
+                        pOutput.accept(ModItems.MIX_MAGNETISM.get());
+                        pOutput.accept(ModItems.MIX_REACHING.get());
+                        pOutput.accept(ModItems.MIX_RETURNING.get());
+                        pOutput.accept(ModItems.MIX_WISDOM.get());
+                        pOutput.accept(ModItems.MIX_HASTE.get());
+                        pOutput.accept(ModItems.MIX_ABSORPTION.get());
+                        pOutput.accept(ModItems.MIX_DOLPHINS_GRACE.get());
+                        pOutput.accept(ModItems.MIX_NIGHT_VISION.get());
+                        pOutput.accept(ModItems.MIX_INVISIBILITY.get());
+                        pOutput.accept(ModItems.MIX_FIRE_RESISTANCE.get());
+                        pOutput.accept(ModItems.MIX_LEAPING.get());
+                        pOutput.accept(ModItems.MIX_SWIFTNESS.get());
+                        pOutput.accept(ModItems.MIX_WATER_BREATHING.get());
+                        pOutput.accept(ModItems.MIX_HEALING.get());
+                        pOutput.accept(ModItems.MIX_REGENERATION.get());
+                        pOutput.accept(ModItems.MIX_STRENGTH.get());
+                        pOutput.accept(ModItems.MIX_SLOW_FALLING.get());
+
                     })
                     .build());
 

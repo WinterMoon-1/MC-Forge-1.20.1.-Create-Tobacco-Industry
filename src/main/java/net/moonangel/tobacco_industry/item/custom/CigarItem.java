@@ -18,18 +18,18 @@ import net.minecraft.world.phys.Vec3;
 import java.util.function.Supplier;
 
 public class CigarItem extends Item {
-    private final int baseColor;
-    private final int stripColor;
+    private final int baseColour;
+    private final int stripColour;
     private final Supplier<MobEffectInstance> effectSupplier;
     private static final int USE_DURATION = 140;
     private static final int SMOKING_LAYER = 11;
     private static final int LIGHTING_LAYER = 10;
 
-    public CigarItem(Properties properties, Supplier<MobEffectInstance> effectSupplier, int baseColor, int stripColor) {
+    public CigarItem(Properties properties, Supplier<MobEffectInstance> effectSupplier, int baseColour, int stripColour) {
         super(properties);
         this.effectSupplier = effectSupplier;
-        this.baseColor = baseColor;
-        this.stripColor = stripColor;
+        this.baseColour = baseColour;
+        this.stripColour = stripColour;
     }
 
     public void applyEffect(Player player) {
@@ -39,12 +39,12 @@ public class CigarItem extends Item {
         }
     }
 
-    public int getBaseColor() {
-        return baseColor;
+    public int getBaseColour() {
+        return baseColour;
     }
 
-    public int getStripColor() {
-        return stripColor;
+    public int getStripColour() {
+        return stripColour;
     }
 
     @Override

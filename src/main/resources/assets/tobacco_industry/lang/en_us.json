@@ -48,5 +48,27 @@
   "item.tobacco_industry.cigar_strength": "Strength Cigar",
   "item.tobacco_industry.cigar_slow_falling": "Slow Falling Cigar",
 
+  "item.tobacco_industry.base_mix": "Tobacco Mix",
+  "item.tobacco_industry.mix_attunement": "Attunement Mix",
+  "item.tobacco_industry.mix_fading": "Fading Mix",
+  "item.tobacco_industry.mix_glowing": "Glowing Mix",
+  "item.tobacco_industry.mix_magnetism": "Magnetism Mix",
+  "item.tobacco_industry.mix_reaching": "Reaching Mix",
+  "item.tobacco_industry.mix_returning": "Returning Mix",
+  "item.tobacco_industry.mix_wisdom": "Wisdom Mix",
+  "item.tobacco_industry.mix_haste": "Haste Mix",
+  "item.tobacco_industry.mix_absorption": "Absorption Mix",
+  "item.tobacco_industry.mix_dolphins_grace": "Dolphin’s Grace Mix",
+  "item.tobacco_industry.mix_night_vision": "Night Vision Mix",
+  "item.tobacco_industry.mix_invisibility": "Invisibility Mix",
+  "item.tobacco_industry.mix_fire_resistance": "Fire Resistance Mix",
+  "item.tobacco_industry.mix_leaping": "Leaping Mix",
+  "item.tobacco_industry.mix_swiftness": "Swiftness Mix",
+  "item.tobacco_industry.mix_water_breathing": "Water Breathing Mix",
+  "item.tobacco_industry.mix_healing": "Healing Mix",
+  "item.tobacco_industry.mix_regeneration": "Regeneration Mix",
+  "item.tobacco_industry.mix_strength": "Strength Mix",
+  "item.tobacco_industry.mix_slow_falling": "Slow Falling Mix",
+
   "creative_tab.tobacco_industry": "Create: Tobacco Industry"
 }

@@ -27,6 +27,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.IPlantable;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -36,25 +37,25 @@ public class TobaccoCropBlock extends CropBlock {
     public static final int SECOND_STAGE_SPAWN_AGE = 5;
 
     private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{
-            Block.box(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D),
+            Block.box(0.0D, 0.0D, 0.0D, 16.0D, 3.0D, 16.0D),
             Block.box(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D),
-            Block.box(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D),
-            Block.box(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D),
-            Block.box(0.0D, 0.0D, 0.0D, 16.0D, 10.0D, 16.0D),
+            Block.box(0.0D, 0.0D, 0.0D, 16.0D, 9.0D, 16.0D),
             Block.box(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D),
-            Block.box(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D),
             Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D),
             Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D),
             Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D),
             Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D),
             Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D),
             Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D),
-            Block.box(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D),
-            Block.box(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D),
-            Block.box(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D),
-            Block.box(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D),
-            Block.box(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D),
-            Block.box(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D)
+            Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D),
+            Block.box(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D),
+            Block.box(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D),
+            Block.box(2.0D, 0.0D, 2.0D, 14.0D, 8.0D, 14.0D),
+            Block.box(2.0D, 0.0D, 2.0D, 14.0D, 9.0D, 14.0D),
+            Block.box(2.0D, 0.0D, 2.0D, 14.0D, 9.0D, 14.0D),
+            Block.box(2.0D, 0.0D, 2.0D, 14.0D, 9.0D, 14.0D),
+            Block.box(2.0D, 0.0D, 2.0D, 14.0D, 9.0D, 14.0D),
+            Block.box(2.0D, 0.0D, 2.0D, 14.0D, 9.0D, 14.0D)
     };
 
 
@@ -65,7 +66,7 @@ public class TobaccoCropBlock extends CropBlock {
     }
 
     @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+    public @NotNull VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         return SHAPE_BY_AGE[this.getAge(pState)];
     }
 
@@ -74,7 +75,7 @@ public class TobaccoCropBlock extends CropBlock {
         if (pLevel.getRawBrightness(pPos, 0) >= 9) {
 
             if (canGrow(pState, pLevel, pPos)) {
-                float growthSpeed = getGrowthSpeed(this, pLevel, pPos); // TODO: Modify growth speed
+                float growthSpeed = getGrowthSpeed(this, pLevel, pPos);
 
                 if (ForgeHooks.onCropsGrowPre(pLevel, pPos, pState, pRandom.nextInt((int)(25.0F / growthSpeed) + 1) == 0)) {
                     growTobaccoPlant(pLevel, pPos, pState, 1);
@@ -190,12 +191,12 @@ public class TobaccoCropBlock extends CropBlock {
     }
 
     @Override
-    protected ItemLike getBaseSeedId() {
+    protected @NotNull ItemLike getBaseSeedId() {
         return ModItems.TOBACCO_SEEDS.get();
     }
 
     @Override
-    public IntegerProperty getAgeProperty() {
+    public @NotNull IntegerProperty getAgeProperty() {
         return AGE;
     }
 
