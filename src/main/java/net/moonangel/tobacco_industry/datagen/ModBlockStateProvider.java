@@ -1,5 +1,6 @@
 package net.moonangel.tobacco_industry.datagen;
 
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.moonangel.tobacco_industry.TobaccoIndustry;
 import net.moonangel.tobacco_industry.block.ModBlocks;
 import net.moonangel.tobacco_industry.block.custom.TobaccoCropBlock;
@@ -22,6 +23,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         makeTobaccoCrop((CropBlock) ModBlocks.TOBACCO_CROP.get(), "tobacco_stage_", "tobacco_stage_");
+
+        simpleBlock(ModBlocks.ROLLING_MACHINE.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/rolling_machine")));
 
     }
 

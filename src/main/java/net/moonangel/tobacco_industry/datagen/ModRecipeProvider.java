@@ -1,14 +1,10 @@
 package net.moonangel.tobacco_industry.datagen;
 
-import com.simibubi.create.AllRecipeTypes;
 import com.simibubi.create.content.kinetics.crusher.CrushingRecipe;
 import com.simibubi.create.content.kinetics.millstone.MillingRecipe;
 import com.simibubi.create.content.kinetics.mixer.MixingRecipe;
 import com.simibubi.create.content.processing.recipe.HeatCondition;
-import com.simibubi.create.content.processing.recipe.ProcessingRecipe;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeBuilder;
-import com.simibubi.create.foundation.data.recipe.CreateRecipeProvider;
-import com.simibubi.create.foundation.data.recipe.CrushingRecipeGen;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
@@ -16,11 +12,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.moonangel.tobacco_industry.TobaccoIndustry;
 import net.moonangel.tobacco_industry.item.ModItems;
-import org.spongepowered.asm.mixin.Mixin;
 
 import java.util.function.Consumer;
 

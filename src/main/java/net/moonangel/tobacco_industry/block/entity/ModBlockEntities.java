@@ -1,16 +1,18 @@
 package net.moonangel.tobacco_industry.block.entity;
 
-import net.moonangel.tobacco_industry.TobaccoIndustry;
-import net.minecraft.world.level.block.entity.BlockEntityType;
+import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.moonangel.tobacco_industry.TobaccoIndustry;
+import net.moonangel.tobacco_industry.block.ModBlocks;
+import net.moonangel.tobacco_industry.block.entity.renderer.RollingMachineBlockEntityRenderer;
 
 public class ModBlockEntities {
-    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
-            DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, TobaccoIndustry.MOD_ID);
 
-    public static void register(IEventBus eventBus) {
-        BLOCK_ENTITIES.register(eventBus);
-    }
+    public static final BlockEntityEntry<RollingMachineBlockEntity> ROLLING_MACHINE = TobaccoIndustry.REGISTRATE
+            .blockEntity("rolling_machine", RollingMachineBlockEntity::new)
+            .validBlocks(ModBlocks.ROLLING_MACHINE)
+            .renderer(() -> RollingMachineBlockEntityRenderer::new)
+            .register();
+
+    public static void register(IEventBus modEventBus) {}
 }

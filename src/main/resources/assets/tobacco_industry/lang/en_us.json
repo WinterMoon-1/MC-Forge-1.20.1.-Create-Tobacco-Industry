@@ -70,5 +70,7 @@
   "item.tobacco_industry.mix_strength": "Strength Mix",
   "item.tobacco_industry.mix_slow_falling": "Slow Falling Mix",
 
+  "block.tobacco_industry.rolling_machine": "Rolling Machine",
+
   "creative_tab.tobacco_industry": "Create: Tobacco Industry"
 }

@@ -42,6 +42,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(ModBlocks.TOBACCO_CROP.get(), createTobaccoCropDrops(ModItems.TOBACCO_LEAF.get(),
                 ModItems.TOBACCO_SEEDS.get(), anyMature));
 
+        this.dropSelf(ModBlocks.ROLLING_MACHINE.get());
     }
 
     @Override

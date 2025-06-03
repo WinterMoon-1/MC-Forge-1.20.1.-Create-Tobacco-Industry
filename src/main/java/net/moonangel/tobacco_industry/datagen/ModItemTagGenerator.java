@@ -94,5 +94,11 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                         ModItems.MIX_STRENGTH.get(),
                         ModItems.MIX_SLOW_FALLING.get()
                 );
+
+        this.tag(ModTags.Items.ROLLING_PAPER)
+                .add(
+                        ModItems.BASE_CIGAR.get()
+                );
+
     }
 }

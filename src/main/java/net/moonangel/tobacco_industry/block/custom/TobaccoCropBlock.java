@@ -1,6 +1,5 @@
 package net.moonangel.tobacco_industry.block.custom;
 
-import net.moonangel.tobacco_industry.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -27,6 +26,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.IPlantable;
+import net.moonangel.tobacco_industry.item.ModItems;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;

@@ -1,5 +1,6 @@
 package net.moonangel.tobacco_industry;
 
+import com.simibubi.create.foundation.data.CreateRegistrate;
 import net.moonangel.tobacco_industry.block.ModBlocks;
 import net.moonangel.tobacco_industry.block.entity.ModBlockEntities;
 import net.moonangel.tobacco_industry.content.ModMovementBehaviours;
@@ -23,13 +24,17 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
+import static net.moonangel.tobacco_industry.block.ModBlocks.ROLLING_MACHINE;
+
 @Mod(TobaccoIndustry.MOD_ID)
 public class TobaccoIndustry {
 
     public static final String MOD_ID = "tobacco_industry";
+    public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(MOD_ID);
 
     public TobaccoIndustry(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
+        REGISTRATE.registerEventListeners(modEventBus);
 
         ModCreativeModTabs.register(modEventBus);
 
@@ -44,8 +49,8 @@ public class TobaccoIndustry {
         ModMenuTypes.register(modEventBus);
         ModRecipes.register(modEventBus);
         ModEffects.register(modEventBus);
-        modEventBus.addListener(this::commonSetup);
 
+        modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
     }
