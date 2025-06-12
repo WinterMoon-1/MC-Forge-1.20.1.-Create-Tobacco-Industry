@@ -12,17 +12,17 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePrope
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
-import net.moonangel.tobacco_industry.block.ModBlocks;
+import net.moonangel.tobacco_industry.block.TIBlocks;
 import net.moonangel.tobacco_industry.block.custom.TobaccoCropBlock;
 
-public class ModLootUtils {
+public class TILootUtils {
     public static LootTable.Builder createCropDrops(Item cropItem, Item seedItem) {
         LootItemCondition.Builder age11 = LootItemBlockStatePropertyCondition
-                .hasBlockStateProperties(ModBlocks.TOBACCO_CROP.get())
+                .hasBlockStateProperties(TIBlocks.TOBACCO_CROP.get())
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(TobaccoCropBlock.AGE, 11));
 
         LootItemCondition.Builder age18 = LootItemBlockStatePropertyCondition
-                .hasBlockStateProperties(ModBlocks.TOBACCO_CROP.get())
+                .hasBlockStateProperties(TIBlocks.TOBACCO_CROP.get())
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(TobaccoCropBlock.AGE, 18));
 
         LootItemCondition.Builder anyMature = AnyOfCondition.anyOf(age11, age18);

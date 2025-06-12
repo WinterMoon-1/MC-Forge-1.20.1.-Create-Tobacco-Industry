@@ -5,15 +5,15 @@ import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.item.TooltipModifier;
-import net.moonangel.tobacco_industry.block.ModBlocks;
-import net.moonangel.tobacco_industry.block.entity.ModBlockEntities;
-import net.moonangel.tobacco_industry.content.ModMovementBehaviours;
-import net.moonangel.tobacco_industry.effect.ModEffects;
+import net.moonangel.tobacco_industry.block.TIBlocks;
+import net.moonangel.tobacco_industry.block.entity.TIBlockEntities;
+import net.moonangel.tobacco_industry.content.TIMovementBehaviours;
+import net.moonangel.tobacco_industry.effect.TIEffects;
 import net.moonangel.tobacco_industry.item.TICreativeModeTabs;
-import net.moonangel.tobacco_industry.item.ModItems;
-import net.moonangel.tobacco_industry.recipe.ModRecipes;
-import net.moonangel.tobacco_industry.screen.ModMenuTypes;
-import net.moonangel.tobacco_industry.sound.ModSounds;
+import net.moonangel.tobacco_industry.item.TIItems;
+import net.moonangel.tobacco_industry.recipe.TIRecipes;
+import net.moonangel.tobacco_industry.screen.TIMenuTypes;
+import net.moonangel.tobacco_industry.sound.TISounds;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -41,15 +41,15 @@ public class TobaccoIndustry {
         REGISTRATE.registerEventListeners(modEventBus);
 
         TICreativeModeTabs.register(modEventBus);
-        ModEffects.register(modEventBus);
+        TIEffects.register(modEventBus);
 
-        ModItems.register(modEventBus);
-        ModBlocks.register(modEventBus);
+        TIItems.register(modEventBus);
+        TIBlocks.register(modEventBus);
 
-        ModSounds.register(modEventBus);
-        ModBlockEntities.register(modEventBus);
-        ModMenuTypes.register(modEventBus);
-        ModRecipes.register(modEventBus);
+        TISounds.register(modEventBus);
+        TIBlockEntities.register(modEventBus);
+        TIMenuTypes.register(modEventBus);
+        TIRecipes.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
@@ -57,7 +57,7 @@ public class TobaccoIndustry {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(ModMovementBehaviours::register);
+        event.enqueueWork(TIMovementBehaviours::register);
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {

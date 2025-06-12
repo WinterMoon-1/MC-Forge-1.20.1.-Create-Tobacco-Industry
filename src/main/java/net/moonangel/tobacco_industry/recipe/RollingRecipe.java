@@ -10,14 +10,14 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.items.wrapper.RecipeWrapper;
-import net.moonangel.tobacco_industry.block.ModBlocks;
+import net.moonangel.tobacco_industry.block.TIBlocks;
 
 import java.util.List;
 import java.util.Set;
 import java.util.function.Supplier;
 
 public class RollingRecipe extends ProcessingRecipe<RecipeWrapper> implements IAssemblyRecipe {
-    public static final IRecipeTypeInfo INSTANCE = new ModRecipes();
+    public static final IRecipeTypeInfo INSTANCE = new TIRecipes();
     public RollingRecipe(ProcessingRecipeBuilder.ProcessingRecipeParams params) {
         super(RollingRecipe.INSTANCE, params);
     }
@@ -41,7 +41,7 @@ public class RollingRecipe extends ProcessingRecipe<RecipeWrapper> implements IA
 
     @Override
     public void addRequiredMachines(Set<ItemLike> set) {
-        set.add(ModBlocks.ROLLING_MACHINE.get());//todo
+        set.add(TIBlocks.ROLLING_MACHINE.get());//todo
     }
 
     @Override

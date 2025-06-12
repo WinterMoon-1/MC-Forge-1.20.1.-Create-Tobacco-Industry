@@ -2,8 +2,8 @@ package net.moonangel.tobacco_industry.item;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.moonangel.tobacco_industry.TobaccoIndustry;
-import net.moonangel.tobacco_industry.block.ModBlocks;
-import net.moonangel.tobacco_industry.effect.ModEffects;
+import net.moonangel.tobacco_industry.block.TIBlocks;
+import net.moonangel.tobacco_industry.effect.TIEffects;
 import net.moonangel.tobacco_industry.item.custom.CigarItem;
 import net.moonangel.tobacco_industry.item.custom.CigaretteItem;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -16,22 +16,20 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 import net.moonangel.tobacco_industry.item.custom.TobaccoMixItem;
-import net.moonangel.tobacco_industry.util.ModModelUtils;
-import net.moonangel.tobacco_industry.util.ModTags;
-import org.checkerframework.checker.units.qual.C;
+import net.moonangel.tobacco_industry.util.TIModelUtils;
+import net.moonangel.tobacco_industry.util.TITags;
 
 import java.util.Arrays;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 @Mod.EventBusSubscriber(modid = TobaccoIndustry.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class ModItems {
+public class TIItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, TobaccoIndustry.MOD_ID);
 
     public static final ItemEntry<ItemNameBlockItem> TOBACCO_SEEDS =
-            TobaccoIndustry.REGISTRATE.item("tobacco_seeds", props -> new ItemNameBlockItem(ModBlocks.TOBACCO_CROP.get(), props)).register();
+            TobaccoIndustry.REGISTRATE.item("tobacco_seeds", props -> new ItemNameBlockItem(TIBlocks.TOBACCO_CROP.get(), props)).register();
     public static final ItemEntry<Item> TOBACCO_LEAF =
             TobaccoIndustry.REGISTRATE.item("tobacco_leaf", Item::new).register();
     public static final ItemEntry<Item> DRIED_TOBACCO_LEAF =
@@ -68,19 +66,19 @@ public class ModItems {
     public static final ItemEntry<CigaretteItem> CIGARETTE_SLOW_FALLING =
             cigarette("cigarette_slow_falling", () -> new MobEffectInstance(MobEffects.SLOW_FALLING, 600, 0), 0xFFFFFF, 0xF3CFB9);
     public static final ItemEntry<CigaretteItem> CIGARETTE_ATTUNEMENT =
-            cigarette("cigarette_attunement", () -> new MobEffectInstance(ModEffects.ATTUNEMENT.get(), 600, 0), 0xFFFFFF, 0xB088E7);
+            cigarette("cigarette_attunement", () -> new MobEffectInstance(TIEffects.ATTUNEMENT.get(), 600, 0), 0xFFFFFF, 0xB088E7);
     public static final ItemEntry<CigaretteItem> CIGARETTE_FADING =
-            cigarette("cigarette_fading", () -> new MobEffectInstance(ModEffects.FADING.get(), 600, 0), 0xFFFFFF, 0xD0F1F1);
+            cigarette("cigarette_fading", () -> new MobEffectInstance(TIEffects.FADING.get(), 600, 0), 0xFFFFFF, 0xD0F1F1);
     public static final ItemEntry<CigaretteItem> CIGARETTE_GLOWING =
-            cigarette("cigarette_glowing", () -> new MobEffectInstance(ModEffects.GLOWING.get(), 600, 0), 0xFFFFFF, 0x7BF4B8);
+            cigarette("cigarette_glowing", () -> new MobEffectInstance(TIEffects.GLOWING.get(), 600, 0), 0xFFFFFF, 0x7BF4B8);
     public static final ItemEntry<CigaretteItem> CIGARETTE_MAGNETISM =
-            cigarette("cigarette_magnetism", () -> new MobEffectInstance(ModEffects.MAGNETISM.get(), 600, 0), 0xFFFFFF, 0xA6BFBB);
+            cigarette("cigarette_magnetism", () -> new MobEffectInstance(TIEffects.MAGNETISM.get(), 600, 0), 0xFFFFFF, 0xA6BFBB);
     public static final ItemEntry<CigaretteItem> CIGARETTE_REACHING =
-            cigarette("cigarette_reaching", () -> new MobEffectInstance(ModEffects.REACHING.get(), 600, 0), 0xFFFFFF, 0x8A6628);
+            cigarette("cigarette_reaching", () -> new MobEffectInstance(TIEffects.REACHING.get(), 600, 0), 0xFFFFFF, 0x8A6628);
     public static final ItemEntry<CigaretteItem> CIGARETTE_RETURNING =
-            cigarette("cigarette_returning", () -> new MobEffectInstance(ModEffects.RETURNING.get(), 600, 0), 0xFFFFFF, 0xE7D684);
+            cigarette("cigarette_returning", () -> new MobEffectInstance(TIEffects.RETURNING.get(), 600, 0), 0xFFFFFF, 0xE7D684);
     public static final ItemEntry<CigaretteItem> CIGARETTE_WISDOM =
-            cigarette("cigarette_wisdom", () -> new MobEffectInstance(ModEffects.WISDOM.get(), 600, 0), 0xFFFFFF, 0xE7D684);
+            cigarette("cigarette_wisdom", () -> new MobEffectInstance(TIEffects.WISDOM.get(), 600, 0), 0xFFFFFF, 0xE7D684);
 
 
     public static final ItemEntry<CigarItem> BASE_CIGAR =
@@ -112,19 +110,19 @@ public class ModItems {
     public static final ItemEntry<CigarItem> CIGAR_SLOW_FALLING =
             cigar("cigar_slow_falling", () -> new MobEffectInstance(MobEffects.SLOW_FALLING, 1200, 0), 0xFFFFFF, 0xF3CFB9);
     public static final ItemEntry<CigarItem> CIGAR_ATTUNEMENT =
-            cigar("cigar_attunement", () -> new MobEffectInstance(ModEffects.ATTUNEMENT.get(), 1200, 0), 0xFFFFFF, 0xB088E7);
+            cigar("cigar_attunement", () -> new MobEffectInstance(TIEffects.ATTUNEMENT.get(), 1200, 0), 0xFFFFFF, 0xB088E7);
     public static final ItemEntry<CigarItem> CIGAR_FADING =
-            cigar("cigar_fading", () -> new MobEffectInstance(ModEffects.FADING.get(), 1200, 0), 0xFFFFFF, 0xD0F1F1);
+            cigar("cigar_fading", () -> new MobEffectInstance(TIEffects.FADING.get(), 1200, 0), 0xFFFFFF, 0xD0F1F1);
     public static final ItemEntry<CigarItem> CIGAR_GLOWING =
-            cigar("cigar_glowing", () -> new MobEffectInstance(ModEffects.GLOWING.get(), 1200, 0), 0xFFFFFF, 0x7BF4B8);
+            cigar("cigar_glowing", () -> new MobEffectInstance(TIEffects.GLOWING.get(), 1200, 0), 0xFFFFFF, 0x7BF4B8);
     public static final ItemEntry<CigarItem> CIGAR_MAGNETISM =
-            cigar("cigar_magnetism", () -> new MobEffectInstance(ModEffects.MAGNETISM.get(), 1200, 0), 0xFFFFFF, 0xA6BFBB);
+            cigar("cigar_magnetism", () -> new MobEffectInstance(TIEffects.MAGNETISM.get(), 1200, 0), 0xFFFFFF, 0xA6BFBB);
     public static final ItemEntry<CigarItem> CIGAR_REACHING =
-            cigar("cigar_reaching", () -> new MobEffectInstance(ModEffects.REACHING.get(), 1200, 0), 0xFFFFFF, 0x8A6628);
+            cigar("cigar_reaching", () -> new MobEffectInstance(TIEffects.REACHING.get(), 1200, 0), 0xFFFFFF, 0x8A6628);
     public static final ItemEntry<CigarItem> CIGAR_RETURNING =
-            cigar("cigar_returning", () -> new MobEffectInstance(ModEffects.RETURNING.get(), 1200, 0), 0xFFFFFF, 0xE7D684);
+            cigar("cigar_returning", () -> new MobEffectInstance(TIEffects.RETURNING.get(), 1200, 0), 0xFFFFFF, 0xE7D684);
     public static final ItemEntry<CigarItem> CIGAR_WISDOM =
-            cigar("cigar_wisdom", () -> new MobEffectInstance(ModEffects.WISDOM.get(), 1200, 0), 0xFFFFFF, 0xE7D684);
+            cigar("cigar_wisdom", () -> new MobEffectInstance(TIEffects.WISDOM.get(), 1200, 0), 0xFFFFFF, 0xE7D684);
 
     public static final ItemEntry<TobaccoMixItem> BASE_MIX =
             mix("base_mix", () -> null, 0xFFFFFF, 0xDE832F);
@@ -155,19 +153,19 @@ public class ModItems {
     public static final ItemEntry<TobaccoMixItem> MIX_SLOW_FALLING =
             mix("mix_slow_falling", () -> new MobEffectInstance(MobEffects.SLOW_FALLING, 1200, 0), 0xFFFFFF, 0xF3CFB9);
     public static final ItemEntry<TobaccoMixItem> MIX_ATTUNEMENT =
-            mix("mix_attunement", () -> new MobEffectInstance(ModEffects.ATTUNEMENT.get(), 1200, 0), 0xFFFFFF, 0xB088E7);
+            mix("mix_attunement", () -> new MobEffectInstance(TIEffects.ATTUNEMENT.get(), 1200, 0), 0xFFFFFF, 0xB088E7);
     public static final ItemEntry<TobaccoMixItem> MIX_FADING =
-            mix("mix_fading", () -> new MobEffectInstance(ModEffects.FADING.get(), 1200, 0), 0xFFFFFF, 0xD0F1F1);
+            mix("mix_fading", () -> new MobEffectInstance(TIEffects.FADING.get(), 1200, 0), 0xFFFFFF, 0xD0F1F1);
     public static final ItemEntry<TobaccoMixItem> MIX_GLOWING =
-            mix("mix_glowing", () -> new MobEffectInstance(ModEffects.GLOWING.get(), 1200, 0), 0xFFFFFF, 0x7BF4B8);
+            mix("mix_glowing", () -> new MobEffectInstance(TIEffects.GLOWING.get(), 1200, 0), 0xFFFFFF, 0x7BF4B8);
     public static final ItemEntry<TobaccoMixItem> MIX_MAGNETISM =
-            mix("mix_magnetism", () -> new MobEffectInstance(ModEffects.MAGNETISM.get(), 1200, 0), 0xFFFFFF, 0xA6BFBB);
+            mix("mix_magnetism", () -> new MobEffectInstance(TIEffects.MAGNETISM.get(), 1200, 0), 0xFFFFFF, 0xA6BFBB);
     public static final ItemEntry<TobaccoMixItem> MIX_REACHING =
-            mix("mix_reaching", () -> new MobEffectInstance(ModEffects.REACHING.get(), 1200, 0), 0xFFFFFF, 0x8A6628);
+            mix("mix_reaching", () -> new MobEffectInstance(TIEffects.REACHING.get(), 1200, 0), 0xFFFFFF, 0x8A6628);
     public static final ItemEntry<TobaccoMixItem> MIX_RETURNING =
-            mix("mix_returning", () -> new MobEffectInstance(ModEffects.RETURNING.get(), 1200, 0), 0xFFFFFF, 0xE7D684);
+            mix("mix_returning", () -> new MobEffectInstance(TIEffects.RETURNING.get(), 1200, 0), 0xFFFFFF, 0xE7D684);
     public static final ItemEntry<TobaccoMixItem> MIX_WISDOM =
-            mix("mix_wisdom", () -> new MobEffectInstance(ModEffects.WISDOM.get(), 1200, 0), 0xFFFFFF, 0xE7D684);
+            mix("mix_wisdom", () -> new MobEffectInstance(TIEffects.WISDOM.get(), 1200, 0), 0xFFFFFF, 0xE7D684);
 
     private static ItemEntry<CigaretteItem> cigarette(String itemName, Supplier<MobEffectInstance> effectSupplier, int baseColour, int stripColour) {
         String langName = formatLangName(itemName);
@@ -181,9 +179,9 @@ public class ModItems {
 
         return TobaccoIndustry.REGISTRATE
                 .item(itemName, props -> new CigaretteItem(properties, effectSupplier, baseColour, stripColour))
-                .tag(ModTags.Items.CIGARETTE)
+                .tag(TITags.Items.CIGARETTE)
                 .lang(langName)
-                .model((ctx, prov) -> ModModelUtils.cigaretteTypeItem(ctx, prov, "cigarette"))
+                .model((ctx, prov) -> TIModelUtils.cigaretteTypeItem(ctx, prov, "cigarette"))
                 .register();
     }
 
@@ -200,9 +198,9 @@ public class ModItems {
 
         return TobaccoIndustry.REGISTRATE
                 .item(itemName, props -> new CigarItem(properties, effectSupplier, baseColour, stripColour))
-                .tag(ModTags.Items.CIGAR)
+                .tag(TITags.Items.CIGAR)
                 .lang(langName)
-                .model((ctx, prov) -> ModModelUtils.cigaretteTypeItem(ctx, prov, "cigar"))
+                .model((ctx, prov) -> TIModelUtils.cigaretteTypeItem(ctx, prov, "cigar"))
                 .register();
     }
 
@@ -213,9 +211,9 @@ public class ModItems {
 
         return TobaccoIndustry.REGISTRATE
                 .item(itemName, props -> new TobaccoMixItem(properties, effectSupplier, baseColour, stripColour))
-                .tag(ModTags.Items.TOBACCO_MIX)
+                .tag(TITags.Items.TOBACCO_MIX)
                 .lang(langName)
-                .model((ctx, prov) -> ModModelUtils.cigaretteTypeItem(ctx, prov, "mix"))
+                .model((ctx, prov) -> TIModelUtils.cigaretteTypeItem(ctx, prov, "mix"))
                 .register();
     }
 

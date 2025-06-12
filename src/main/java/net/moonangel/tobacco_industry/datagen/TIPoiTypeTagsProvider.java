@@ -9,8 +9,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
 
-public class ModPoiTypeTagsProvider extends PoiTypeTagsProvider {
-    public ModPoiTypeTagsProvider(PackOutput p_256012_, CompletableFuture<HolderLookup.Provider> p_256617_, @Nullable ExistingFileHelper existingFileHelper) {
+public class TIPoiTypeTagsProvider extends PoiTypeTagsProvider {
+    public TIPoiTypeTagsProvider(PackOutput p_256012_, CompletableFuture<HolderLookup.Provider> p_256617_, @Nullable ExistingFileHelper existingFileHelper) {
         super(p_256012_, p_256617_, TobaccoIndustry.MOD_ID, existingFileHelper);
     }
 

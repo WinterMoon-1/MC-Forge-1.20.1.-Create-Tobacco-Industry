@@ -8,7 +8,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
-public class ModTags {
+public class TITags {
     public static class Blocks {
 
         private static TagKey<Block> tag(String name) {

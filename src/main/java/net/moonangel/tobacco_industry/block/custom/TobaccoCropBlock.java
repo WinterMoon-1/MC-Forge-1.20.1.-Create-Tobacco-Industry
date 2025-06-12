@@ -26,7 +26,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.IPlantable;
-import net.moonangel.tobacco_industry.item.ModItems;
+import net.moonangel.tobacco_industry.item.TIItems;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -192,7 +192,7 @@ public class TobaccoCropBlock extends CropBlock {
 
     @Override
     protected @NotNull ItemLike getBaseSeedId() {
-        return ModItems.TOBACCO_SEEDS.get();
+        return TIItems.TOBACCO_SEEDS.get();
     }
 
     @Override

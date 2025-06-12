@@ -38,7 +38,7 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.moonangel.tobacco_industry.recipe.RollingRecipe;
-import net.moonangel.tobacco_industry.util.ModTags;
+import net.moonangel.tobacco_industry.util.TITags;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -128,7 +128,7 @@ public class RollingMachineBlockEntity extends KineticBlockEntity {
         // Mix input
         AABB topSearchArea = new AABB(center.add(0, 0.75, 0), center.add(0, 0.25, 0)).inflate(.4f);
         for (ItemEntity itemEntity : level.getEntitiesOfClass(ItemEntity.class, topSearchArea)) {
-            if (itemEntity.getItem().is(ModTags.Items.TOBACCO_MIX)) insertItem(itemEntity, MIX_SLOT);
+            if (itemEntity.getItem().is(TITags.Items.TOBACCO_MIX)) insertItem(itemEntity, MIX_SLOT);
         }
 
         // Paper input
@@ -136,7 +136,7 @@ public class RollingMachineBlockEntity extends KineticBlockEntity {
         Vec3 offset = Vec3.atLowerCornerOf(leftSide.getNormal()).scale(0.5);
         AABB sideSearchArea = new AABB(center, center.add(offset)).inflate(0.3);
         for (ItemEntity itemEntity : level.getEntitiesOfClass(ItemEntity.class, sideSearchArea)) {
-            if (itemEntity.getItem().is(ModTags.Items.ROLLING_PAPER)) insertItem(itemEntity, PAPER_SLOT);
+            if (itemEntity.getItem().is(TITags.Items.ROLLING_PAPER)) insertItem(itemEntity, PAPER_SLOT);
         }
     }
 

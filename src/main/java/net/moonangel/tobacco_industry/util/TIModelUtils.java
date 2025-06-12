@@ -13,9 +13,8 @@ import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.client.model.generators.loaders.SeparateTransformsModelBuilder;
 import net.moonangel.tobacco_industry.TobaccoIndustry;
 import net.moonangel.tobacco_industry.block.custom.TobaccoCropBlock;
-import net.moonangel.tobacco_industry.item.custom.CigaretteItem;
 
-public class ModModelUtils {
+public class TIModelUtils {
     public static <T extends Item> void cigaretteTypeItem(DataGenContext<Item, T> ctx, RegistrateItemModelProvider prov, String type) {
         String itemName = ctx.getId().getPath();
 

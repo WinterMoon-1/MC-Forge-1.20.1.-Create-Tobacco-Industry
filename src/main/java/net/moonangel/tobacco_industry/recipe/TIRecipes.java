@@ -12,7 +12,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.moonangel.tobacco_industry.TobaccoIndustry;
 
-public class ModRecipes implements IRecipeTypeInfo {
+public class TIRecipes implements IRecipeTypeInfo {
 
     public static final ResourceLocation ID = new ResourceLocation(TobaccoIndustry.MOD_ID, "rolling");
 
