@@ -8,8 +8,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
+import net.moonangel.tobacco_industry.block.ModBlocks;
 
-public class ModCreativeModTabs {
+public class TICreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, TobaccoIndustry.MOD_ID);
 
@@ -18,7 +19,8 @@ public class ModCreativeModTabs {
                     .title(Component.translatable("creative_tab.tobacco_industry"))
                     .displayItems((pParameters, pOutput) -> {
 
-                        // TOBACCO CRAFTING MATERIALS
+                        // TOBACCO PRODUCTION CHAIN
+                        pOutput.accept(ModBlocks.ROLLING_MACHINE.get());
                         pOutput.accept(ModItems.TOBACCO_SEEDS.get());
                         pOutput.accept(ModItems.TOBACCO_LEAF.get());
                         pOutput.accept(ModItems.DRIED_TOBACCO_LEAF.get());

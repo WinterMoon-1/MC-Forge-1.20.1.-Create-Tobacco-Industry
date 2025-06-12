@@ -1,6 +1,10 @@
 {
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
+	"textures": {
+		"0": "tobacco_industry:block/rolling_machine_base",
+		"particle": "tobacco_industry:block/rolling_machine_base"
+	},
 	"elements": [
 		{
 			"name": "base",
