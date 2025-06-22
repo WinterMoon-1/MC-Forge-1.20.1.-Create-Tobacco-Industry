@@ -8,6 +8,7 @@ import com.simibubi.create.foundation.item.TooltipModifier;
 import net.moonangel.tobacco_industry.block.TIBlocks;
 import net.moonangel.tobacco_industry.block.entity.TIBlockEntities;
 import net.moonangel.tobacco_industry.content.TIMovementBehaviours;
+import net.moonangel.tobacco_industry.datagen.TILangProvider;
 import net.moonangel.tobacco_industry.effect.TIEffects;
 import net.moonangel.tobacco_industry.item.TICreativeModeTabs;
 import net.moonangel.tobacco_industry.item.TIItems;
@@ -50,6 +51,7 @@ public class TobaccoIndustry {
         TIBlockEntities.register(modEventBus);
         TIMenuTypes.register(modEventBus);
         TIRecipes.register(modEventBus);
+        TILangProvider.prepare();
 
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);

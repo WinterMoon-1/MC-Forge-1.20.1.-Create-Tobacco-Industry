@@ -14,6 +14,7 @@ public class TICreativeModeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, TobaccoIndustry.MOD_ID);
 
+
     public static final RegistryObject<CreativeModeTab> TOBACCO_INDUSTRY_TAB = CREATIVE_MODE_TABS.register("tobacco_industry_tab",
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(TIItems.BASE_CIGARETTE.get()))
                     .title(Component.translatable("creative_tab.tobacco_industry"))

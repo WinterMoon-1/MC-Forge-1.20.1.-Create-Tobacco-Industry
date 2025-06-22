@@ -31,6 +31,7 @@ public class TIModelUtils {
 
         // Main model with perspective overrides
         prov.getBuilder(itemName)
+                .parent(new ModelFile.UncheckedModelFile(prov.mcLoc("item/generated")))
                 .customLoader(SeparateTransformsModelBuilder::begin)
                 .base(model3D)
                 .perspective(ItemDisplayContext.GUI, prov.getBuilder(itemName + "_2d"))
