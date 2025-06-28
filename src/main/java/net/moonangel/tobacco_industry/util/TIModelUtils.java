@@ -14,6 +14,8 @@ import net.minecraftforge.client.model.generators.loaders.SeparateTransformsMode
 import net.moonangel.tobacco_industry.TobaccoIndustry;
 import net.moonangel.tobacco_industry.block.custom.TobaccoCropBlock;
 
+import javax.xml.crypto.Data;
+
 public class TIModelUtils {
     public static <T extends Item> void cigaretteTypeItem(DataGenContext<Item, T> ctx, RegistrateItemModelProvider prov, String type) {
         String itemName = ctx.getId().getPath();
@@ -37,6 +39,14 @@ public class TIModelUtils {
                 .perspective(ItemDisplayContext.GUI, prov.getBuilder(itemName + "_2d"))
                 .perspective(ItemDisplayContext.GROUND, prov.getBuilder(itemName + "_2d"))
                 .perspective(ItemDisplayContext.FIXED, prov.getBuilder(itemName + "_2d"));
+    }
+
+    public static <T extends Item> void mixItem(DataGenContext<Item, T> ctx, RegistrateItemModelProvider prov) {
+        String itemName = ctx.getId().getPath();
+
+        prov.withExistingParent(itemName, prov.mcLoc("item/generated"))
+                .texture("layer0", prov.modLoc("item/mix_base"))
+                .texture("layer1", prov.modLoc("item/mix_strip"));
     }
 
     public static void makeTobaccoCrop(Block block, BlockStateProvider prov, String baseName) {

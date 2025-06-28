@@ -261,6 +261,7 @@ public class RollingMachineBlockEntity extends KineticBlockEntity {
 
     //TODO Might use it
     protected void spawnEventParticles(ItemStack stack) {
+        /*
         if (stack == null || stack.isEmpty())
             return;
 
@@ -278,6 +279,7 @@ public class RollingMachineBlockEntity extends KineticBlockEntity {
             Vec3 m = VecHelper.offsetRandomly(new Vec3(0, 0.25f, 0), r, .125f);
             level.addParticle(particleData, v.x, v.y, v.z, m.x, m.y, m.y);
         }
+        */
     }
 
     //TODO Might use it
@@ -386,5 +388,4 @@ public class RollingMachineBlockEntity extends KineticBlockEntity {
         inventory.appliedRecipe = false;
         sendData();
     }
-
 }

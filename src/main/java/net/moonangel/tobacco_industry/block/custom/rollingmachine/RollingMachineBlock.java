@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.moonangel.tobacco_industry.block.entity.RollingMachineBlockEntity;
+import net.moonangel.tobacco_industry.block.entity.TIBlockEntities;
 
 public class RollingMachineBlock extends HorizontalKineticBlock implements IBE<RollingMachineBlockEntity> {
     public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 16, 16);
@@ -47,7 +48,7 @@ public class RollingMachineBlock extends HorizontalKineticBlock implements IBE<R
 
     @Override
     public BlockEntityType<? extends RollingMachineBlockEntity> getBlockEntityType() {
-        return null;
+        return TIBlockEntities.ROLLING_MACHINE.get();
     }
 
     @Override

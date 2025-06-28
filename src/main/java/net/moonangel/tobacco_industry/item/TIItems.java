@@ -213,7 +213,7 @@ public class TIItems {
                 .item(itemName, props -> new TobaccoMixItem(properties, effectSupplier, baseColour, stripColour))
                 .tag(TITags.Items.TOBACCO_MIX)
                 .lang(langName)
-                .model((ctx, prov) -> TIModelUtils.cigaretteTypeItem(ctx, prov, "mix"))
+                .model(TIModelUtils::mixItem)
                 .register();
     }
 
