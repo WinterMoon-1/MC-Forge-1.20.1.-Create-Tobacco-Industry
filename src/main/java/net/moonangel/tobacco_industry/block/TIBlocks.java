@@ -5,6 +5,7 @@ import com.simibubi.create.content.kinetics.BlockStressDefaults;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.moonangel.tobacco_industry.TobaccoIndustry;
 import net.moonangel.tobacco_industry.block.custom.rollingmachine.RollingMachineBlock;
 import net.moonangel.tobacco_industry.block.custom.TobaccoCropBlock;
@@ -24,6 +25,7 @@ public class TIBlocks {
 
     public static final BlockEntry<RollingMachineBlock> ROLLING_MACHINE = TobaccoIndustry.REGISTRATE.block("rolling_machine", RollingMachineBlock::new)
             .initialProperties(SharedProperties::softMetal)
+            .properties(BlockBehaviour.Properties::noOcclusion)
             .tag(AllTags.AllBlockTags.SAFE_NBT.tag)
             .transform(BlockStressDefaults.setImpact(4.0))
             .blockstate((ctx, prov) -> prov.horizontalBlock(ctx.get(), prov.models()

@@ -4,7 +4,6 @@ import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.moonangel.tobacco_industry.TobaccoIndustry;
 import net.moonangel.tobacco_industry.block.TIBlocks;
-import net.moonangel.tobacco_industry.block.entity.renderer.RollingMachineBlockEntityRenderer;
 
 public class TIBlockEntities {
 

@@ -5,8 +5,10 @@ import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.item.TooltipModifier;
+import net.minecraftforge.client.event.ModelEvent;
 import net.moonangel.tobacco_industry.block.TIBlocks;
 import net.moonangel.tobacco_industry.block.entity.TIBlockEntities;
+import net.moonangel.tobacco_industry.block.entity.TIPartialModels;
 import net.moonangel.tobacco_industry.content.TIMovementBehaviours;
 import net.moonangel.tobacco_industry.datagen.TILangProvider;
 import net.moonangel.tobacco_industry.effect.TIEffects;
@@ -46,6 +48,7 @@ public class TobaccoIndustry {
 
         TIItems.register(modEventBus);
         TIBlocks.register(modEventBus);
+        TIPartialModels.init();
 
         TISounds.register(modEventBus);
         TIBlockEntities.register(modEventBus);
@@ -75,6 +78,11 @@ public class TobaccoIndustry {
     public class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+        }
+
+        @SubscribeEvent
+        public static void registerPartials(ModelEvent.RegisterAdditional event) {
+            event.register(TIPartialModels.SHAFT_EIGHTH.getLocation());
         }
     }
 }

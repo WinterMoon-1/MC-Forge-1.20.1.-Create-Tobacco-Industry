@@ -41,7 +41,7 @@ public class RollingRecipe extends ProcessingRecipe<RecipeWrapper> implements IA
 
     @Override
     public void addRequiredMachines(Set<ItemLike> set) {
-        set.add(TIBlocks.ROLLING_MACHINE.get());//todo
+        set.add(TIBlocks.ROLLING_MACHINE.get());
     }
 
     @Override
